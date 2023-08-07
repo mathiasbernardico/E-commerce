@@ -14,12 +14,12 @@
       
       usuario = document.getElementById("usuario").value;
       contra  = document.getElementById("contra").value;
-      capcha  = document.getElementById("capcha").value;
+      capcha  = document.getElementById("capcha").checked;
 
-    if (usuario == ''||contra == ''||capcha == '') {
+    if (usuario == ''||contra == ''||capcha == false) {
       alert('Usuario, contraseña y capcha son obligatorios');
       return false;
-    }else{
+    }else if (usuario != ''&&contra != ''&&capcha){
     window.location.replace('https://mathiasbernardico.github.io/workspace-inicial');
     }
 }
