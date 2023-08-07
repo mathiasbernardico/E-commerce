@@ -11,14 +11,17 @@
   <link href="css/styles.css" rel="stylesheet">
   <script>
     function datos_requeridos(){
-   let valores = [...document.getElementsByClassName("form_login_requerido").value];
-   for(i=0;i<=valores.length;i++){
-    if(valores[i]==""){
-        alert("Campos obligatorios sin completar");
+      
+      usuario = document.getElementById("usuario").value;
+      contra  = document.getElementById("contra").value;
+      capcha  = document.getElementById("capcha").value;
+
+    if (usuario == ''||contra == ''||capcha == '') {
+      alert('Usuario, contraseña y capcha son obligatorios');
+      return false;
     }else{
-        window.location.replace('https://mathiasbernardico.github.io/workspace-inicial');
+    window.location.replace('https://mathiasbernardico.github.io/workspace-inicial');;
     }
-   }
 }
   </script>
   <style>
@@ -37,14 +40,11 @@
 <body>
   <main class="mt-5">
     <div class="container">
-      <!-- <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div> -->
-      <h1>Porfavor ingresa</h1>
-      <input class="form_login_requerido" value="" id="usuario" type="user" placeholder="Usuario">
-      <label for="usuario">Usuario</label>
-      <input class="form_login_requerido" value="" id="contra" type="password" placeholder="Contraseña">
-      <label for="contra">Contraseña</label>
+      <h1>Ingresa tus datos</h1>
+      <input class="form_login_requerido" value="" id="usuario" type="user" placeholder="Usuario" required>
+      <label for="usuario" id="aviso_usuario">Usuario</label>
+      <input class="form_login_requerido" value="" id="contra" type="password" placeholder="Contraseña" required>
+      <label for="contra" id="aviso_contra">Contraseña</label>
       <p><a href="#">¿Olvidaste tu contraseña?</a></p>
       <div class="checkbox_div">
         <label>
@@ -53,12 +53,12 @@
         </label>
       </div>
       <div class="checkbox_div capcha">
-        <label>
-          <input class="form_login_requerido" type="checkbox" value="capcha">
+        <label id="aviso_capcha">
+          <input class="form_login_requerido" type="checkbox" id="capcha" required>
           "No soy un robot"
         </label>
       </div>
-      <button id="btn_login" onclick="datos_requeridos">Ingresar</button>
+      <button id="btn_login" type="submit" onclick="datos_requeridos()">Ingresar</button>
     </div>
   </main>
   <footer class="text-muted">
