@@ -273,7 +273,7 @@ body {
 }
 
 .container {
-  background-color: #69A78E;
+  background-color: #c0e0de;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -285,8 +285,8 @@ body {
 .product-item {
   display: flex;
   position: relative;
-  align-items: flex-start;
 }
+
 img {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -294,7 +294,7 @@ img {
   border-radius: 50px;
   width: 450px;
   border-style: inset;
-  border-color: #3c474b;
+  border-color: #4f7cac;
   border-width: 5px;
 }
 #nombreproducto {
@@ -302,6 +302,8 @@ img {
   color: #c0e0de;
   font-weight: bolder;
   align-self: first baseline;
+  text-decoration: underline;
+  text-decoration-color: #4f7cac;
 }
 
 #descripcionproducto {
@@ -309,7 +311,7 @@ img {
   border-radius: 10px;
   padding-block: 20px;
   padding-inline: 20px;
-  border-color: #53C0FB;
+  border-color: #4f7cac;
   border-style: inset;
   color: #162521;
   align-self: center;
@@ -318,8 +320,8 @@ img {
   text-align: left;
 }
 #precio {
-  background-color: #162521;
-  color: #c0e0de;
+  background-color: #c0e0de;
+  color: #69A78E;
   font-weight: bold;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -327,16 +329,16 @@ img {
   padding-inline: 5px;
   border-radius: 5px;
   position: absolute;
-  left: 500px;
-  top: 280px;
+  left: -230px;
+  top: 160px;
   border-style: inset;
   border-width: 2px;
 
 }
 #vendidos {
-  background-color: #c0e0de;
+  background-color: #3c474b;
   width: fit-content;
-  color: #69A78E;
+  color: #c0e0de;
   font-weight: bold;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -349,3 +351,10 @@ img {
 
 
 }
+.nav-link {
+    color: #3c474b !important;
+    font-weight: bold;
+}
+
+
+
