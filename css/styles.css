@@ -299,29 +299,29 @@ img {
 }
 #nombreproducto {
   margin-top: 50px;
-  color: #c0e0de;
+  color: #162521;
   font-weight: bolder;
   align-self: first baseline;
   text-decoration: underline;
-  text-decoration-color: #4f7cac;
+  text-decoration-color: #3c474b;
 }
 
 #descripcionproducto {
-  background-color: #c0e0de;
+  background-color: #69A78E;
   border-radius: 10px;
   padding-block: 20px;
   padding-inline: 20px;
-  border-color: #4f7cac;
+  border-color: #69A78E;
   border-style: inset;
-  color: #162521;
+  color: #fff;
   align-self: center;
   position: absolute;
   left: 480px;
   text-align: left;
 }
 #precio {
-  background-color: #c0e0de;
-  color: #69A78E;
+  background-color: #69A78E;
+  color: #162521;
   font-weight: bold;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -336,7 +336,7 @@ img {
 
 }
 #vendidos {
-  background-color: #3c474b;
+  background-color: #162521;
   width: fit-content;
   color: #c0e0de;
   font-weight: bold;
@@ -356,5 +356,27 @@ img {
     font-weight: bold;
 }
 
+.list-group-item img{
+  border-radius: 50px;
+  border-color: #69A78E;
+  border-style: inset;
+  border-width: 5px;
+}
 
+.list-group-item {
+  color: #3c474b;
+  border-radius: 30px;
+}
+.list-group-item h4 {
+  font-weight: bolder;
+  color: #69A78E;
+  margin-top: 30px;
+  margin-left: 30px;
+
+}
+.list-group-item p {
+text-align: left;
+margin-top: 50px;
+margin-left: 30px;
+}
 
