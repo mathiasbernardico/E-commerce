@@ -281,3 +281,71 @@ body {
   padding: 20px;
   border-radius: 50px;
 }
+
+.product-item {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+}
+img {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  border-radius: 50px;
+  width: 450px;
+  border-style: inset;
+  border-color: #3c474b;
+  border-width: 5px;
+}
+#nombreproducto {
+  margin-top: 50px;
+  color: #c0e0de;
+  font-weight: bolder;
+  align-self: first baseline;
+}
+
+#descripcionproducto {
+  background-color: #c0e0de;
+  border-radius: 10px;
+  padding-block: 20px;
+  padding-inline: 20px;
+  border-color: #53C0FB;
+  border-style: inset;
+  color: #162521;
+  align-self: center;
+  position: absolute;
+  left: 480px;
+  text-align: left;
+}
+#precio {
+  background-color: #162521;
+  color: #c0e0de;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  padding-block: 5px;
+  padding-inline: 5px;
+  border-radius: 5px;
+  position: absolute;
+  left: 500px;
+  top: 280px;
+  border-style: inset;
+  border-width: 2px;
+
+}
+#vendidos {
+  background-color: #c0e0de;
+  width: fit-content;
+  color: #69A78E;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  padding-block: 5px;
+  padding-inline: 5px;
+  border-radius: 5px;
+  position: absolute;
+  left: 800px;
+  top: 150px;
+
+
+}
