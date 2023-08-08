@@ -188,3 +188,96 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+body {
+  background-color: #162521;
+  margin: 0;
+  padding: 0;
+}
+
+.container h1 {
+  color: #69A78E;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#loginForm {
+  background-color: #c0e0de;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 50px;
+  margin-left: 41%;
+  padding-bottom: 30px;
+}
+
+.div_form {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+#form_login_requerido {
+  width: 100%;
+  height: 100%;
+}
+#usuario{
+  margin-top: 20px;
+}
+#contra{
+  margin-top: 20px;
+}
+
+#aviso_usuario {
+  position: absolute; 
+  bottom: 3px; 
+  left: 60px; 
+  transition: all 0.3s ease;
+  color: #69A78E;
+}
+
+#usuario:focus + #aviso_usuario,
+#usuario:valid + #aviso_usuario {
+  transform: translateY(-100%); 
+  font-size: 0px; 
+}
+
+#contra:focus + #aviso_contra,
+#contra:valid + #aviso_contra {
+  transform: translateY(-100%); 
+  font-size: 0px; 
+}
+
+#aviso_contra {
+  position: absolute; 
+  bottom: 3px; 
+  left: 59px; 
+  transition: all 0.3s ease;
+  color: #69A78E;
+}
+
+#btn_login {
+  background-color: #69A78E;
+  color: #162521;
+  border-radius: 50px;
+  margin-top: 30px;
+}
+
+#btn_login:hover {
+  background-color: #162521;
+  color: #c0e0de;
+  transform: translateY(5px)
+}
+
+.container {
+  background-color: #69A78E;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 50px;
+}
