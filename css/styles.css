@@ -265,7 +265,16 @@ body {
   border-radius: 50px;
   margin-top: 30px;
 }
+#logout {
+  color: #162521;
+  background-color: #69A78E;
 
+}
+#logout:hover{
+  background-color: #4f7cac;
+  transform: translateY(5px);
+  color: #c0e0de;
+}
 #btn_login:hover {
   background-color: #162521;
   color: #c0e0de;
