@@ -1,3 +1,4 @@
+
 const URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"
 
 const productList = document.getElementById("container-list")
@@ -25,3 +26,4 @@ fetch (URL)
   categoria(data.catName)
   autos(data.products)
 })
+
