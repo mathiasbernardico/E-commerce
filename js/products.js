@@ -1,35 +1,29 @@
 
-const catID = localStorage.getItem("catID");
+const URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"
 
-// busca el json componiendo el nombre con catID (updateado cuando hacemos click en el codigo que nos dan)
-const jsonURL = `${catID}.json`;
+const productList = document.getElementById("container-list")
 
-fetch(jsonURL)
-  .then(response => response.json())
-  .then(data => {
-    displayProducts(data.products);
-  })
-  .catch(error => {
-    console.error('Error fetching JSON data:', error);
-  });
-
-function displayProducts(products) {
-  const productContainer = document.getElementById('product-list-container');
-
-  // buscar los productos
-  products.forEach(product => {
-    const productItem = document.createElement('div');
-    productItem.classList.add('product-item');
-
-    // se añaden en el html dentro del div creado con la función anterior
-    productItem.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3 id= nombreproducto>${product.name}</h3>
-      <p id= descripcionproducto>${product.description}</p>
-      <p id= precio>Precio: ${product.cost} ${product.currency}</p>
-      <p id= vendidos>Vendidos: ${product.soldCount}</p>
-    `;
-
-    productContainer.appendChild(productItem);
-  });
+function autos(listaDeAutos){
+  for(let auto of listaDeAutos){
+    let divProductContainer = document.createElement("div")
+    divProductContainer.classList.add("car-card")
+    productList.appendChild(divProductContainer)
+    divProductContainer.innerHTML += `<img src="${auto.image}" alt= "imagen del producto" >`
+    divProductContainer.innerHTML += `<p> ${auto.name} - ${auto.currency} ${auto.cost} 
+    <span class="product-value"> ${auto.soldCount} vendidos </span> </p>`
+    divProductContainer.innerHTML += `<p> ${auto.description} </p>`
+  }
 }
+
+function categoria (categoria){
+  let categoryParagraph = document.getElementById("category-paragraph")
+  categoryParagraph.innerHTML += `Categoria ${categoria} `
+}
+
+fetch (URL)
+.then(response => response.json())
+.then(data => {
+  categoria(data.catName)
+  autos(data.products)
+})
+

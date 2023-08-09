@@ -189,6 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
+
 body {
   background-color: #162521;
   margin: 0;
@@ -291,74 +292,6 @@ body {
   border-radius: 50px;
 }
 
-.product-item {
-  display: flex;
-  position: relative;
-}
-
-img {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin-right: 50px;
-  border-radius: 50px;
-  width: 450px;
-  border-style: inset;
-  border-color: #4f7cac;
-  border-width: 5px;
-}
-#nombreproducto {
-  margin-top: 50px;
-  color: #162521;
-  font-weight: bolder;
-  align-self: first baseline;
-  text-decoration: underline;
-  text-decoration-color: #3c474b;
-}
-
-#descripcionproducto {
-  background-color: #69A78E;
-  border-radius: 10px;
-  padding-block: 20px;
-  padding-inline: 20px;
-  border-color: #69A78E;
-  border-style: inset;
-  color: #fff;
-  align-self: center;
-  position: absolute;
-  left: 480px;
-  text-align: left;
-}
-#precio {
-  background-color: #69A78E;
-  color: #162521;
-  font-weight: bold;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  padding-block: 5px;
-  padding-inline: 5px;
-  border-radius: 5px;
-  position: absolute;
-  left: -230px;
-  top: 160px;
-  border-style: inset;
-  border-width: 2px;
-
-}
-#vendidos {
-  background-color: #162521;
-  width: fit-content;
-  color: #c0e0de;
-  font-weight: bold;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  padding-block: 5px;
-  padding-inline: 5px;
-  border-radius: 5px;
-  position: absolute;
-  left: 800px;
-  top: 150px;
-
-
 }
 .nav-link {
     color: #3c474b !important;
@@ -389,3 +322,45 @@ margin-top: 50px;
 margin-left: 30px;
 }
 
+
+/* a partir de este punto empeze a poner estilos para la lista de productos (por ahora autos) */
+
+.pb-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pb-5 #container-list {
+  background-color: #FAF7F6;
+  width: 60%;
+}
+
+.car-card {
+  padding: 10px;
+  min-height: 120px;
+  border: 1px solid #ECECEC;
+  border-radius: 2%;
+  transition: 0.8s;
+  font-size: 1rem;
+}
+
+.car-card:hover{
+  cursor: pointer;
+  background-color: #0087F7;
+}
+
+.car-card p + p {
+  font-size: 0.82rem;
+}
+
+.car-card p span {
+  float: right;
+  font-size: 0.67rem;
+}
+
+.car-card img{
+  float: left;
+  width: 150px;
+  margin-right: 8px;
+}
