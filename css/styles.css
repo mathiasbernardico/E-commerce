@@ -320,8 +320,22 @@ body {
   transition: all 0.3s ease;
   color: #69A78E;
 }
-
-#btn_login, #logout {
+#logout > img{
+  height: 30px;
+  width: 30px;
+  filter: invert(7%) sepia(9%) saturate(3150%) hue-rotate(113deg) brightness(94%) contrast(85%);
+}
+#logout{
+  background-color: #69A78E;
+  color: #162521;
+  border-radius: 50px;
+  margin-top: 10px;
+  border: 1px solid;
+  overflow: hidden;
+  position: relative;
+  z-index: 20;
+}
+#btn_login{
   background-color: #69A78E;
   color: #162521;
   border-radius: 50px;
