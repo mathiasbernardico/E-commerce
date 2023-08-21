@@ -1,15 +1,17 @@
 function datos_requeridos(){
       
-    usuario = document.getElementById("usuario").value;
-    contra  = document.getElementById("contra").value;
+    user = document.getElementById("usuario").value;
+    pass  = document.getElementById("contra").value;
     capcha  = document.getElementById("capcha").checked;
 
-  if (usuario == ''||contra == ''||capcha == false) {
+  if (user == ''||pass == ''||capcha == false) {
     alert('Usuario, contraseña y capcha son obligatorios');
     return false;
-  }else if (usuario != ''&&contra != ''&&capcha){
+  }else if (user != ''&&pass != ''&&capcha){
+  localStorage.setItem('nav_user', user);
   window.location.replace('https://mathiasbernardico.github.io/workspace-inicial');
   localStorage.setItem('isLoggedIn', 'true');
+
   }
 }
 

@@ -17,8 +17,10 @@
         // Usuario no ha iniciado sesión y no está en la página de login, redirige a login.html
         window.location.href = 'login.html';
       }
+    const login = document.getElementById("login");
+    login.innerHTML = localStorage.getItem("nav_user");
     });
-   
+    
   </script>
   
 </head>
@@ -42,7 +44,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link" href="login.html" id="login">Login</a>
           </li>
           
         </ul>
