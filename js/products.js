@@ -1,23 +1,24 @@
+let item = localStorage.getItem("catID");
 
-const URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"
+const URLProducts = `https://japceibal.github.io/emercado-api/cats_products/${item}.json`;
 
 const productList = document.getElementById("container-list");
 const busqueda = document.getElementById("busqueda"); //Se genera constante busqueda
 
-function autos(listaDeAutos, textobuscado){
+function productos(listaDeProductos, textobuscado){
   productList.innerHTML = ""; // Vacía el contenido de productList para volver a generarlo
-  for(let auto of listaDeAutos){
-    if (//Se evalua que el nombre o la descripcion incluya ek texto buscado
-    auto.name.toLowerCase().includes(textobuscado) ||
-    auto.description.toLowerCase().includes(textobuscado)
+  for(let producto of listaDeProductos){
+    if (//Se evalua que el nombre o la descripcion incluya el texto buscado
+    producto.name.toLowerCase().includes(textobuscado) ||
+    producto.description.toLowerCase().includes(textobuscado)
     ) {
     let divProductContainer = document.createElement("div");
     divProductContainer.classList.add("car-card");
     productList.appendChild(divProductContainer);
-    divProductContainer.innerHTML += `<img src="${auto.image}" alt= "imagen del producto" >`;
-    divProductContainer.innerHTML += `<p> ${auto.name} - ${auto.currency} ${auto.cost} 
-    <span class="product-value"> ${auto.soldCount} vendidos </span> </p>`;
-    divProductContainer.innerHTML += `<p> ${auto.description} </p>`;
+    divProductContainer.innerHTML += `<img src="${producto.image}" alt= "imagen del producto" >`;
+    divProductContainer.innerHTML += `<p> ${producto.name} - ${producto.currency} ${producto.cost} 
+    <span class="product-value"> ${producto.soldCount} vendidos </span> </p>`;
+    divProductContainer.innerHTML += `<p> ${producto.description} </p>`;
   }
  }
 } 
@@ -26,15 +27,15 @@ function autos(listaDeAutos, textobuscado){
 
 function categoria (categoria){
   let categoryParagraph = document.getElementById("category-paragraph");
-  categoryParagraph.innerHTML = `Categoria ${categoria} `;
+  categoryParagraph.innerHTML = `Verás aquí todos los productos de la categoría ${categoria} `;
 }
 
-fetch (URL)
+fetch (URLProducts)
 .then(response => response.json())
 .then(data => {
   categoria(data.catName);
-  autos(data.products, "");
-}) //se incluyen todos los autos
+  productos(data.products, "");
+}) //se incluyen todos los productos
 
 busqueda.addEventListener("input", function () { //si se utiliza el input
   const textobuscado = busqueda.value.toLowerCase();
@@ -42,6 +43,6 @@ busqueda.addEventListener("input", function () { //si se utiliza el input
   .then ((response) => response.json())
   .then((data)=> {
     categoria(data.catName);
-    autos(data.products, textobuscado); //Llama a autos con el termino de busqueda nuevo
+    productos(data.products, textobuscado); //Llama a productos con el termino de busqueda nuevo
   });
 });
