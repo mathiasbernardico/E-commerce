@@ -39,7 +39,7 @@ fetch (URLProducts)
 
 busqueda.addEventListener("input", function () { //si se utiliza el input
   const textobuscado = busqueda.value.toLowerCase();
-  fetch(URL)
+  fetch(URLProducts)
   .then ((response) => response.json())
   .then((data)=> {
     categoria(data.catName);
