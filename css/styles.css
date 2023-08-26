@@ -50,14 +50,54 @@ nav a {
 
   transition: 1s;
 }
-.col > div > small{
+.col-3{
+  animation: AchicaryAgrandar 2s ease 0s 1 normal forwards;
+}
+.col-3 > img:hover{
+  animation: AchicaryAgrandar 2s ease 0s 1 normal forwards;
 }
 .col > div > h4:hover{
-  position: absolute;
-  cursor: pointer;
-  transition: 1s;
-  font-size: 0px;
-  
+  animation: CambiarColorTrans 1s ease 0s 1 normal forwards;
+  color: #293033;
+}
+
+@keyframes AchicaryAgrandar {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
+@keyframes CambiarColorTrans {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 /* ------- */
 
@@ -312,7 +352,9 @@ body {
   margin-left: 38%;
   box-shadow: 10px 24px 116px 0px #c0e0de;
 }
-
+.incorrecto{
+background-color: rgb(232, 94, 94);
+}
 #aviso_contra {
   position: absolute; 
   bottom: 3px; 

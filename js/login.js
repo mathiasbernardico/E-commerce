@@ -1,3 +1,4 @@
+
 function datos_requeridos(){
       
     user = document.getElementById("usuario").value;
@@ -31,4 +32,31 @@ function logout() {
     if (event.target.id === 'logout') {
       logout();
     }
+  });
+
+  const imputs = document.querySelectorAll('#loginForm input');
+  const validadFormularios = (e) => {
+    switch (e.target.name) {
+      case "user":
+        if(e.target.value !== ""){
+          document.getElementById("usuario").classList.remove("incorrecto");
+        }else{
+          document.getElementById("usuario").classList.add("incorrecto");
+        }
+      break;
+      case "pass":
+        if(e.target.value !== ""){
+          document.getElementById("contra").classList.remove("incorrecto");
+        }else{
+          document.getElementById("contra").classList.add("incorrecto");
+        }
+      break;
+      case "capcha":
+        
+      break;
+    }
+  }
+  imputs.forEach((imputs) => {
+    imputs.addEventListener('keyup', validadFormularios);
+    imputs.addEventListener('blur', validadFormularios);
   });
