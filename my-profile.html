@@ -27,14 +27,18 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const isLoggedIn = localStorage.getItem('isLoggedIn');
-  
+      const login = document.getElementById("login");
+      if(isLoggedIn){
+        // Si está ingresado, que el navbar muestre el username
+        login.textContent = localStorage.getItem("nav_user");
+    } else {
+        // Si no se inició sesió, que muestre Login
+      login.textContent = "Login";
+    }
       if (!isLoggedIn && window.location.href.indexOf('login.html') === -1) {
         // Usuario no ha iniciado sesión y no está en la página de login, redirige a login.html
         window.location.href = 'login.html';
       }
-
-    const login = document.getElementById("login");
-    login.innerHTML = localStorage.getItem("nav_user");
 
     });
    
