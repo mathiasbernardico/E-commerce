@@ -65,6 +65,27 @@
     </div>
     <div class="container" id="div_filt">
       <div class="row">
+        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Cant.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <select onchange="clasificacion(this.value)" name="select" id="select_clasificacion">
@@ -77,11 +98,7 @@
               <option value="2" class="btn-check" id="sortByCount">
                 Cant
               </option>
-              <option value="3" class="btn-check" id="min_max">
-                Min/Max
-              </option>
-              <option value="4"></option>
-  
+            
             </select>
           </div>
         </div>

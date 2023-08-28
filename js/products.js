@@ -27,23 +27,11 @@ function productos(listaDeProductos, textobuscado){
 } 
 function clasificacion_products(dato){
   if(dato == '0'){
-    fetch(URLProducts)
-    .then ((response) => response.json())
-    .then((data)=> {
-    productos(data.products.cost).sort(function(a, b){return a - b});
-  });
+    alert(product.cost);
   }else if(dato == '1'){
-    fetch(URLProducts)
-    .then ((response) => response.json())
-    .then((data)=> {
-    productos(data.products.cost).sort(function(b, a){return b + a});
-    });
+    (productos.cost).sort(function(b, a){return b + a});
   }else if(dato == '2'){
-    fetch(URLProducts)
-    .then ((response) => response.json())
-    .then((data)=> {
-    productos(data.products.soldCount).sort(function(a, b){return a - b});
-  });
+    (productos.soldCount).sort(function(a, b){return a - b});
   }
 }
 
