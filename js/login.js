@@ -27,6 +27,9 @@ loginForm.addEventListener('submit', function(event) {
 
 function logout() {
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('nav_user');
+    const login = document.getElementById("login");
+    login.textContent = "Login";
   }
   document.addEventListener('click', function(event) {
     if (event.target.id === 'logout') {
