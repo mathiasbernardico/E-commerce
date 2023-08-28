@@ -5,6 +5,8 @@ const URLProducts = `https://japceibal.github.io/emercado-api/cats_products/${it
 const productList = document.getElementById("container-list");
 const busqueda = document.getElementById("busqueda"); //Se genera constante busqueda
 
+
+
 function productos(listaDeProductos, textobuscado){
   productList.innerHTML = ""; // Vacía el contenido de productList para volver a generarlo
   for(let producto of listaDeProductos){
@@ -21,7 +23,29 @@ function productos(listaDeProductos, textobuscado){
     divProductContainer.innerHTML += `<p> ${producto.description} </p>`;
   }
  }
+ 
 } 
+function clasificacion_products(dato){
+  if(dato == '0'){
+    fetch(URLProducts)
+    .then ((response) => response.json())
+    .then((data)=> {
+    productos(data.products.cost).sort(function(a, b){return a - b});
+  });
+  }else if(dato == '1'){
+    fetch(URLProducts)
+    .then ((response) => response.json())
+    .then((data)=> {
+    productos(data.products.cost).sort(function(b, a){return b + a});
+    });
+  }else if(dato == '2'){
+    fetch(URLProducts)
+    .then ((response) => response.json())
+    .then((data)=> {
+    productos(data.products.soldCount).sort(function(a, b){return a - b});
+  });
+  }
+}
 
 
 
