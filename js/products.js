@@ -25,16 +25,30 @@ function productos(listaDeProductos, textobuscado){
  }
  
 } 
-function clasificacion_products(dato){
-  if(dato == '0'){
-    alert(product.cost);
-  }else if(dato == '1'){
-    (productos.cost).sort(function(b, a){return b + a});
-  }else if(dato == '2'){
-    (productos.soldCount).sort(function(a, b){return a - b});
-  }
-}
 
+
+
+function clasificacion_products(dato) {
+  fetch(URLProducts)
+    .then((response) => response.json())
+    .then((data) => {
+      categoria(data.catName);
+
+      if (dato == '0') {
+       
+        data.products.sort(function(a,b){return a.cost-b.cost});
+      } else if (dato == '1') {
+      
+        data.products.sort(function(a,b){return b.cost-a.cost});
+      } else if (dato == '2') {
+       
+        data.products.sort(function(a,b){return b.soldCount-a.soldCount});
+      }
+
+     
+      productos(data.products, "");
+    });
+}
 
 
 function categoria (categoria){
