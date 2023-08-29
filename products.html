@@ -1,111 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const login = document.getElementById("login");
+        if (isLoggedIn) {
+          // Si está ingresado, que el navbar muestre el username
+          login.textContent = localStorage.getItem("nav_user");
+        } else {
+          // Si no se inició sesió, que muestre Login
+          login.textContent = "Login";
+        }
+        if (!isLoggedIn && window.location.href.indexOf("login.html") === -1) {
+          // Usuario no ha iniciado sesión y no está en la página de login, redirige a login.html
+          window.location.href = "login.html";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html" id="login">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="pb-5 container">
+      <h1>Productos</h1>
+      <p id="category-paragraph"></p>
+      <!-- se genera un div con el cuadro de búsqueda -->
+      <select
+        onchange="clasificacion_products(this.value)"
+        name="select"
+        id="clasificacion_products"
+      >
+        <option value="" disabled selected class="btn-check" id="sortAscPrec">
+          Ordenar...
+        </option>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+        <option value="0" class="btn-check" id="sortAscPrec">
+          Acendente(Precio)
+        </option>
+        <option value="1" class="btn-check" id="sortDescPrec">
+          Descendente(Precio)
+        </option>
+        <option value="2" class="btn-check" id="sortDescRele">
+          Descendente(Relevancia)
+        </option>
+      </select>
+      <div id="filtros-por-rangos">
+        <span>Precio</span>
+        <input id="input-minimo" type="text" placeholder="Minimo" />
+        <input id="input-maximo" type="text" placeholder="Maximo" />
+        <button id="boton-filtrar-por-rangos">Filtrar</button>
+      </div>
+      <div class="search-container">
+        <input type="search" id="busqueda" placeholder="Buscar productos..." />
+      </div>
+      <div id="container-list"></div>
+    </main>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      const login = document.getElementById("login");
-      if(isLoggedIn){
-        // Si está ingresado, que el navbar muestre el username
-        login.textContent = localStorage.getItem("nav_user");
-    } else {
-        // Si no se inició sesió, que muestre Login
-      login.textContent = "Login";
-    }
-      if (!isLoggedIn && window.location.href.indexOf('login.html') === -1) {
-        // Usuario no ha iniciado sesión y no está en la página de login, redirige a login.html
-        window.location.href = 'login.html';
-      }
-
-
-    });
-  
-  </script>
-  
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.html" id="login">Login</a>
-          </li>
-          
-        </ul>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+        </p>
+      </div>
+    </footer>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-  </nav>
-
-  <main class="pb-5 container">
-    
-    <h1>Productos</h1>
-    <p id="category-paragraph"></p>
-     <!-- se genera un div con el cuadro de búsqueda -->
-     <select onchange="clasificacion_products(this.value)" name="select" id="clasificacion_products">
-      <option value="" disabled selected  class="btn-check" id="sortAscPrec">
-        Ordenar...
-
-      <option value="0" class="btn-check" id="sortAscPrec">
-        Acendente(Precio)
-      </option>
-      <option value="1" class="btn-check" id="sortDescPrec">
-        Descendente(Precio)
-      </option>
-      <option value="2" class="btn-check" id="sortDescRele">
-        Descendente(Relevancia)
-      </option>
-    </select>
-     <div class="search-container">
-      <input type="search" id="busqueda" placeholder="Buscar productos...">
-    </div>    
-    <div id="container-list">
-    </div>
-
-  </main>
-  
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/products.js"></script>
-</body>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/products.js"></script>
+  </body>
 </html>
