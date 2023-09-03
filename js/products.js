@@ -18,7 +18,13 @@ function productos(listaDeProductos, textobuscado) {
       divProductContainer.innerHTML += `<p> ${producto.name} - ${producto.currency} ${producto.cost}
     <span class="product-value"> ${producto.soldCount} vendidos </span> </p>`;
       divProductContainer.innerHTML += `<p> ${producto.description} </p>`;
+
+      divProductContainer.addEventListener("click", () => {
+        localStorage.setItem('id_producto', producto.id);
+        window.location.href = 'product-info.html';
+      });
     }
+    
   }
 }
 
