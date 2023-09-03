@@ -81,7 +81,7 @@ function filtrarMinMax(lista) {
     return lista.filter((item) => {
       return item.cost <= inputMaximo.value;
     });
-  }else if(inputMinimo.value !== "" !== ""){
+  }else if(inputMinimo.value !== ""){
     return lista.filter((item) => {
       return item.cost >= inputMinimo.value;
     });
