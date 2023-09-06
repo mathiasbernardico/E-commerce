@@ -557,3 +557,56 @@ margin-left: 30px;
 #boton-filtrar-por-rangos:active {
   background-color: #005ba5;
 }
+
+/* Estilos aplicados a comentarios */
+#div_comment {
+  margin-top: 50px;
+  display: grid;
+  place-items: center;
+}
+
+#div_comment h2 {
+  color: #c0e0de;
+  font-weight: bold;
+}
+#div_comment p {
+  margin-bottom: 10px;
+  color: #69A78E;
+}
+#comentario {
+  resize: both;
+  width: 300px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+#div_comment button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#div_comment button:hover {
+  background-color: #69A78E;
+  color: #ECECEC;
+}
+
+.puntuación {
+  display: flex;
+  align-items: center;
+}
+
+input[type="radio"] {
+  display: none; /* Borra los botoncitos del radio button */
+}
+
+label {
+  width: 53px; 
+  height: 50px; 
+  background-image: url('/img/estrellaoutline.png'); 
+  background-size: cover;
+  cursor: pointer;
+  transition: background-image 1s ease-in-out;
+  margin: 0 2px;
+}
+
+input[type="radio"]:checked + label {
+  background-image: url('/img/estrella.png'); /* Reemplaza la imagen por una estrella pintada */
+}
