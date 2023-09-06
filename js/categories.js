@@ -6,6 +6,8 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+//Hacemos un sort para arreglar el orden de las categorias alfabeticamente y por cantidad de productos
+
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
@@ -39,6 +41,8 @@ function setCatID(id) {
     localStorage.setItem("catID", id);
     window.location = "products.html"
 }
+
+//Mostramos la lista de categorias por la cantidad de productos
 
 function showCategoriesList(){
 
@@ -105,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function(e){
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
+
+    //Limpiamos y mostramos la lista sin filtros
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";

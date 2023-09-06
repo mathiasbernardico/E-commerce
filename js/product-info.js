@@ -6,6 +6,7 @@ const ID = localStorage.getItem("catID");
 const URLProducts = `https://japceibal.github.io/emercado-api/cats_products/${ID}.json`;
 const productList = document.getElementById("container-list");
 
+//Hacemos el fetch para acceder a los productos segun su ID
 fetch(URLProducts)
 .then((response) => response.json())
 .then((data) => {
@@ -22,10 +23,10 @@ fetch(URLProducts)
   <p> ${miProducto.description} </p>
   </div>
   `; 
+  //Añadimos la estructura y el contenido al contenedor de lista de productos en el html
   productList.innerHTML = divProductContainer;
-}
-}
-})
+}}})
+
 //Retornamos el error por consola
 .catch(error => {
   console.error('Error:', error);
