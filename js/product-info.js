@@ -1,10 +1,9 @@
-let isContentLoaded = false; // declaro la variable isContetLoaded en falso
 document.addEventListener("DOMContentLoaded", function () {
-  if (!isContentLoaded) { //compruevo si esta en falso para que no se cargue el contenido
     const idProducto = localStorage.getItem("id_producto") || "";
     const URLProduct = `https://japceibal.github.io/emercado-api/products/${idProducto}.json`;
     const containerInfo = document.getElementById("container-info");
 
+    // Funcion para renderizar la info seleccionada en pantalla
     function mostrarInfoProducto(obj) {
       containerInfo.innerHTML += `<h1>${obj.name} </h1>`;
       containerInfo.innerHTML += `<img src="${obj.images[1]}" alt="imagen auto">`;
@@ -32,6 +31,4 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }
-  isContentLoaded = true;
 });
