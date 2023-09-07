@@ -1,6 +1,6 @@
 let isContentLoaded = false; // declaro la variable isContetLoaded en falso
 document.addEventListener("DOMContentLoaded", function () {
-  if (!isContentLoaded) { //compruevo si esta en falso para que no se cargue el contenido 2 veces
+  if (!isContentLoaded) { //compruevo si esta en falso para que no se cargue el contenido
     const idProducto = localStorage.getItem("id_producto") || "";
     const URLProduct = `https://japceibal.github.io/emercado-api/products/${idProducto}.json`;
     const containerInfo = document.getElementById("container-info");
@@ -22,10 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
       divImagenes.innerHTML += `<img src="${obj.images[3]}" alt="imagen auto">`;
       containerInfo.appendChild(divImagenes);
     }
-
-    console.log("prueba");
-    console.log("pa");
-
     //Hacemos el fetch para acceder a la info del producto segun su ID
     fetch(URLProduct)
       .then((response) => response.json())
