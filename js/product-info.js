@@ -1,34 +1,41 @@
-document.addEventListener('DOMContentLoaded', function() {
+let isContentLoaded = false; // declaro la variable isContetLoaded en falso
+document.addEventListener("DOMContentLoaded", function () {
+  if (!isContentLoaded) { //compruevo si esta en falso para que no se cargue el contenido 2 veces
+    const idProducto = localStorage.getItem("id_producto") || "";
+    const URLProduct = `https://japceibal.github.io/emercado-api/products/${idProducto}.json`;
+    const containerInfo = document.getElementById("container-info");
 
-//Variables locales
-const idProducto = localStorage.getItem('id_producto');
-const ID = localStorage.getItem("catID");
-const URLProducts = `https://japceibal.github.io/emercado-api/cats_products/${ID}.json`;
-const productList = document.getElementById("container-list");
+    function mostrarInfoProducto(obj) {
+      containerInfo.innerHTML += `<h1>${obj.name} </h1>`;
+      containerInfo.innerHTML += `<img src="${obj.images[1]}" alt="imagen auto">`;
+      const divTexto = document.createElement("div");
+      divTexto.classList.add("div-texto");
+      divTexto.innerHTML += `<p>Precio ${obj.currency} ${obj.cost}</p>`;
+      divTexto.innerHTML += `<p>Categoria ${obj.category}</p>`;
+      divTexto.innerHTML += `<p>Vendidos ${obj.soldCount}</p>`;
+      containerInfo.appendChild(divTexto);
+      containerInfo.innerHTML += `<p>${obj.description}</p>`;
+      const divImagenes = document.createElement("div");
+      divImagenes.classList.add("div-imagenes");
+      divImagenes.innerHTML += `<img src="${obj.images[0]}" alt="imagen auto">`;
+      divImagenes.innerHTML += `<img src="${obj.images[2]}" alt="imagen auto">`;
+      divImagenes.innerHTML += `<img src="${obj.images[3]}" alt="imagen auto">`;
+      containerInfo.appendChild(divImagenes);
+    }
 
-//Hacemos el fetch para acceder a los productos segun su ID
-fetch(URLProducts)
-.then((response) => response.json())
-.then((data) => {
-  const listaDeProductos = [...data.products]; //Creamos una constante la cual contiene un array con todos los datos obtenidos (productos)
-  for (let i=0; listaDeProductos.length > i; i++ ) { //Recorremos el array con un for
-    if (listaDeProductos[i].id==idProducto){ //Buscamos la coincidencia en el array con la id del producto anteriormente almacenada en localStorage
-  const miProducto = listaDeProductos[i]; //Guardamos ese producto 
-  
-  //Creamos toda la estructura con los datos obtenidos para mostrarlos en el html
-  const divProductContainer = ` 
-  <div class="car-card">
-  <img src="${miProducto.image}" alt= "imagen del producto" >
-  <p> ${miProducto.name} - ${miProducto.currency} ${miProducto.cost} <span class="product-value"> ${miProducto.soldCount} vendidos </span> </p>
-  <p> ${miProducto.description} </p>
-  </div>
-  `; 
-  //Añadimos la estructura y el contenido al contenedor de lista de productos en el html
-  productList.innerHTML = divProductContainer;
-}}})
+    console.log("prueba");
+    console.log("pa");
 
-//Retornamos el error por consola
-.catch(error => {
-  console.error('Error:', error);
-});
+    //Hacemos el fetch para acceder a la info del producto segun su ID
+    fetch(URLProduct)
+      .then((response) => response.json())
+      .then((data) => {
+        mostrarInfoProducto(data);
+      })
+      //Retornamos el error por consola
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+  isContentLoaded = true;
 });

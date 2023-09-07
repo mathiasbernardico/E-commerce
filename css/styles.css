@@ -615,3 +615,30 @@ label.star {
 input[type="radio"]:checked + label {
   background-image: url('/img/estrella.png'); /* Reemplaza la imagen por una estrella pintada */
 }
+
+/* Comienza estilos para Products info */
+#container-info > img {
+  margin: auto;
+  border-radius: 4px;
+}
+#container-info p {
+  font-size: 1.3rem;
+}
+#container-info h1{
+  color: #141718;
+}
+.div-texto{
+  display: flex;
+  justify-content:space-around;
+}
+.div-texto p {
+  font-size: 1.4rem;
+}
+.div-imagenes{
+  display: flex;
+  justify-content: space-around;
+}
+.div-imagenes img{
+  width: 270px;
+  border-radius: 5px;
+}
