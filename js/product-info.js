@@ -47,8 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
     '<span class="fa fa-star"></span>',
   ];
   function rellenarEstrellas(estrellas, calificacion) {
-    for (let i = 0; i <= estrellas.length; i++) {
-      if (i < calificacion) {
+    for (let i = 0; i < estrellas.length; i++) {
+      if (i >= calificacion) {
+        estrellas[i] = '<span class="fa fa-star"></span>';
+      } else {
         estrellas[i] = '<span class="fa fa-star checked"></span>';
       }
     }
