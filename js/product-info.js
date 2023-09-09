@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const URLProduct = `https://japceibal.github.io/emercado-api/products/${idProducto}.json`;
   const URLComentarios = `https://japceibal.github.io/emercado-api/products_comments/${idProducto}.json`;
   const containerInfo = document.getElementById("container-info");
-  const divParaComentarios = document.getElementById("comentarios");
+  const btn_enviar_comentario = document.getElementById("enviar_comentario");
+  let selectedRating = 1;
   // Funcion para renderizar la info seleccionada en pantalla
   function mostrarInfoProducto(obj) {
     containerInfo.innerHTML += `<h1>${obj.name} </h1>`;
@@ -76,4 +77,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     containerInfo.appendChild(divContenedorComentarios);
   }
+
+  //Evento click para agregar el comentario de manera ficticia junto a los otros comentarios
+
+
+
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-rating'));
+        highlightStars(selectedRating);
+    });
+});
+
+function highlightStars(rating) {
+    document.querySelectorAll('.star').forEach(star => {
+        const starRating = parseInt(star.getAttribute('data-rating'));
+        if (starRating <= rating) {
+            star.style.color = 'gold';
+        } else {
+            star.style.color = 'black';
+        }
+    });
+}
+btn_enviar_comentario.addEventListener('click', function() {
+    const user = localStorage.getItem('nav_user');
+    const description = document.getElementById('comentario').value;
+    const fecha = new Date().toLocaleDateString();
+    const comentarioDiv = `
+        <div class="div-comentario">
+          <p>${user} - ${fecha} - ${rellenarEstrellas(estrellas, selectedRating)}</p>
+          <p>${description}</p>
+        </div>
+    `;
+    containerInfo.innerHTML += comentarioDiv;
+
+    // Limpiar los campos del formulario después de publicar el comentario
+    document.getElementById('comentario').value = '';
+    selectedRating = 1;
+    highlightStars(selectedRating);
+
+  });
 });
