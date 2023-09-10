@@ -99,18 +99,19 @@ function highlightStars(rating) {
         }
     });
 }
+//Creamos el comentario y lo incertamos localmente
 btn_enviar_comentario.addEventListener('click', function() {
     const user = localStorage.getItem('nav_user');
     const description = document.getElementById('comentario').value;
-    const fecha = new Date().toLocaleDateString();
+    const f = new Date();
+    const fecha = f.toLocaleString();
     const comentarioDiv = `
-        <div class="div-comentario">
+          <div class="div-comentario nuevo">
           <p>${user} - ${fecha} - ${rellenarEstrellas(estrellas, selectedRating)}</p>
           <p>${description}</p>
-        </div>
+          </div>
     `;
     containerInfo.innerHTML += comentarioDiv;
-
     // Limpiar los campos del formulario después de publicar el comentario
     document.getElementById('comentario').value = '';
     selectedRating = 1;
