@@ -104,10 +104,10 @@ btn_enviar_comentario.addEventListener('click', function() {
     const user = localStorage.getItem('nav_user');
     const description = document.getElementById('comentario').value;
     const f = new Date();
-    const fecha = f.toLocaleString();
+    const fechaFormateada = `${f.getFullYear()}-${(f.getMonth() + 1).toString().padStart(2, '0')}-${f.getDate().toString().padStart(2, '0')} ${f.getHours().toString().padStart(2, '0')}:${f.getMinutes().toString().padStart(2, '0')}:${f.getSeconds().toString().padStart(2, '0')}`;
     const comentarioDiv = `
           <div class="div-comentario nuevo">
-          <p>${user} - ${fecha} - ${rellenarEstrellas(estrellas, selectedRating)}</p>
+          <p>${user} - ${fechaFormateada} - ${rellenarEstrellas(estrellas, selectedRating)}</p>
           <p>${description}</p>
           </div>
     `;
