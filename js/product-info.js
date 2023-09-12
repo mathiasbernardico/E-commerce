@@ -99,7 +99,7 @@ function highlightStars(rating) {
         }
     });
 }
-//Creamos el comentario y lo incertamos localmente
+//Creamos el comentario y lo insertamos localmente
 btn_enviar_comentario.addEventListener('click', function() {
     const user = localStorage.getItem('nav_user');
     const description = document.getElementById('comentario').value;
