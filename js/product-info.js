@@ -16,12 +16,31 @@ document.addEventListener("DOMContentLoaded", function () {
     divTexto.innerHTML += `<p>Vendidos ${obj.soldCount}</p>`;
     containerInfo.appendChild(divTexto);
     containerInfo.innerHTML += `<p>${obj.description}</p>`;
-    const divImagenes = document.createElement("div");
-    divImagenes.classList.add("div-imagenes");
-    divImagenes.innerHTML += `<img src="${obj.images[0]}" alt="imagen auto">`;
-    divImagenes.innerHTML += `<img src="${obj.images[2]}" alt="imagen auto">`;
-    divImagenes.innerHTML += `<img src="${obj.images[3]}" alt="imagen auto">`;
-    containerInfo.appendChild(divImagenes);
+    const divImagenes = `
+    <div id="carouselIMG" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="${obj.images[0]}" class="d-block w-100" alt="imagen auto">
+    </div>
+    <div class="carousel-item">
+      <img src="${obj.images[1]}" class="d-block w-100" alt="imagen auto">
+    </div>
+    <div class="carousel-item">
+      <img src="${obj.images[2]}" class="d-block w-100" alt="imagen auto">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselIMG" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselIMG" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+    `;
+  
+    containerInfo.innerHTML += divImagenes;
   }
   //Hacemos el fetch para acceder a la info del producto segun su ID
   fetch(URLProduct)
@@ -32,7 +51,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           mostrarComentarios(data);
-        });
+        })
+        fetch(URLCaroucel)
+        .then((response) => response.json())
+        .then((data) => {
+          productos(data.products);
+          agregarActivoCarosuel()
+    });
+
     })
     //Retornamos el error por consola
     .catch((error) => {
@@ -129,11 +155,10 @@ btn_enviar_comentario.addEventListener('click', function() {
     for (let producto of listaDeProductos) {
         const divNuevoItem = `
         <div id = "${producto.id}" class="carousel-item">
-        <img src="${producto.image}" class="d-block w-100" width="40px" height="40px" alt="">${producto.name}
+        <img src="${producto.image}" class="d-block w-100" width="40px" height="40px" alt="" onclick='localStorage.setItem("id_producto", ${producto.id}); window.location.href = "product-info.html";'>${producto.name}
         </div>
         `;
         carouselFotos.innerHTML += divNuevoItem;
-        
     }
   }
 
@@ -157,13 +182,13 @@ btn_enviar_comentario.addEventListener('click', function() {
         carouselContenedor.innerHTML += agregandoBotones;
   }
   
-  
-fetch(URLCaroucel)
+  fetch(URLCaroucel)
 .then((response) => response.json())
 .then((data) => {
   productos(data.products);
   agregarActivoCarosuel()
 });
+
 
 
 });
