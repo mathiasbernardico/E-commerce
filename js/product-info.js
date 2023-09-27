@@ -118,4 +118,52 @@ btn_enviar_comentario.addEventListener('click', function() {
     highlightStars(selectedRating);
 
   });
+  
+  //Caroucel
+
+  let item = localStorage.getItem("catID");
+  const URLCaroucel = `https://japceibal.github.io/emercado-api/cats_products/${item}.json`;
+  const carouselContenedor = document.getElementById("carouselExampleControls");
+  const carouselFotos = document.getElementById("carouselFotos");
+  function productos(listaDeProductos) {
+    for (let producto of listaDeProductos) {
+        const divNuevoItem = `
+        <div id = "${producto.id}" class="carousel-item">
+        <img src="${producto.image}" class="d-block w-100" width="40px" height="40px" alt="">${producto.name}
+        </div>
+        `;
+        carouselFotos.innerHTML += divNuevoItem;
+        
+    }
+  }
+
+  
+
+  function agregarActivoCarosuel(){
+    const arrayDivs = [...document.getElementsByClassName("carousel-item")];
+    const primerDiv = arrayDivs[0];
+    primerDiv.classList.add("active");
+
+    const agregandoBotones = `
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        `;
+        carouselContenedor.innerHTML += agregandoBotones;
+  }
+  
+  
+fetch(URLCaroucel)
+.then((response) => response.json())
+.then((data) => {
+  productos(data.products);
+  agregarActivoCarosuel()
+});
+
+
 });

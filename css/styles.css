@@ -693,3 +693,10 @@ body {
   border-radius: 5px;
 }
 
+/* Carousel css */
+
+#carouselExampleControls{
+  left: 500px;
+  width: 200px;
+  height: 200px;
+}
