@@ -11,20 +11,4 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-
-    document.getElementById("menuLogin").addEventListener("click", function() {
-        window.location = "login.html"
-    });
-
-    document.getElementById("menuCart").addEventListener("click", function() {
-        window.location = "cart.html"
-    });
-
-    document.getElementById("menuProfile").addEventListener("click", function() {
-        window.location = "my-profile.html"
-    });
-
-    document.getElementById("menuLogout").addEventListener("click", function() {
-        window.location = "login.html"
-    });
 });
