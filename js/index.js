@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
+    document.getElementById("menuLogin").addEventListener("click", function() {
+        window.location = "login.html"
+    });
+
     document.getElementById("menuCart").addEventListener("click", function() {
         window.location = "cart.html"
     });

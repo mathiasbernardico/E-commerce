@@ -12,7 +12,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const isLoggedIn = localStorage.getItem('isLoggedIn');
-      const login = document.getElementById("login");
+      const login = document.getElementById("dropdownMenu2");
       if(isLoggedIn){
         // Si está ingresado, que el navbar muestre el username
         login.textContent = localStorage.getItem("nav_user");
@@ -49,21 +49,21 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="login.html" id="login">Login</a>
-            
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-              login
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button id="menuCart" type="button">Mi carrito</button></li>
-                <li><button id="menuProfile" type="button">Mi perfil</button></li>
-                <li><button id="menuLogout" type="button">Cerrar sesión</button></li>
-             </ul>
-            </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
+              <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" id="menuLogout" href="login.html">Cerrar sesión</a></li>
+            </ul>
           </li>
+            
+        </ul>
+            
+        </li>
         </ul>
       </div>
     </div>
