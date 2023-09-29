@@ -17,7 +17,7 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const isLoggedIn = localStorage.getItem("isLoggedIn");
-        const login = document.getElementById("login");
+        const login = document.getElementById("dropdownMenu2");
         if (isLoggedIn) {
           // Si está ingresado, que el navbar muestre el username
           login.textContent = localStorage.getItem("nav_user");
