@@ -672,16 +672,41 @@ body {
 
 #container-info h1 {
   color: #141718;
+  font-family: 'Gabarito', cursive;
+  background-color: #69A78E;
+  margin: 2% 20% ;
+  border: solid 3px;
+  border-color: #141718;
 }
 
 .div-texto {
   display: flex;
   justify-content: space-around;
+  margin: 2% 2%;
 }
 
 .div-texto p {
   font-size: 1.4rem;
+  background-color: #69A78E;
+  margin: auto;
+  padding: 2%;
+  border-radius: 5px;
+  border: solid 3px;
+ 
 }
+
+#container-info>p{
+  border-radius: 5px;
+  border: solid 3px;
+}
+
+#container-info p{
+  background-color: #69A78E;
+  margin: auto;
+  padding: 2%;
+  border-radius: 5px;
+}
+
 
 .div-imagenes {
   display: flex;
@@ -693,7 +718,32 @@ body {
   border-radius: 5px;
 }
 
+.contenedor-comentarios h2{
+  font-family: 'Gabarito', cursive;
+  background-color: #69A78E;
+  margin: 2% 5%;
+  padding: 2%;
+  border-radius: 5px;
+  border: solid 3px;
+}
+
 /* Carousel css */
+
+#carouselIMG{
+  margin-top: 2%;
+}
+
+.carousel-item img{
+  width: 600px;
+  height: 450px;
+  scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
+}
+
+#carouselFotos img {
+  width: 100%;
+  height: auto;
+}
 
 #carouselExampleControls{
   left: 500px;
@@ -712,3 +762,19 @@ body {
   background-color: black;
   color: white;
 }
+
+
+
+#div_comment{
+  background-color: #69A78E;
+  margin: 2% 35%;
+  border-radius: 5%;
+  border: solid 3px;
+}
+
+#div_comment h2{
+  margin-top: 3%;
+  color: #FAF7F6;
+  
+}
+

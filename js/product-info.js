@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
     <div id="carouselIMG" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${obj.images[0]}" class="d-block w-100" alt="imagen auto">
+      <img src="${obj.images[0]}" alt="imagen auto">
     </div>
     <div class="carousel-item">
-      <img src="${obj.images[1]}" class="d-block w-100" alt="imagen auto">
+      <img src="${obj.images[1]}" alt="imagen auto">
     </div>
     <div class="carousel-item">
-      <img src="${obj.images[2]}" class="d-block w-100" alt="imagen auto">
+      <img src="${obj.images[2]}" alt="imagen auto">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselIMG" data-bs-slide="prev">
