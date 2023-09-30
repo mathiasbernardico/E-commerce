@@ -52,7 +52,23 @@ nav a {
 
 .tit_cat {
   color: #69A78E;
+  font-family: 'Gabarito', cursive;
 }
+
+#containerCategorias{
+  background-color: #c0e0de;
+  margin: 2%;
+  border-radius: 8px;
+  border: solid 3px;
+  border-color: #162521;
+}
+
+#containerCategorias h2{
+  color: #141718;
+  font-family: 'Tektur', cursive;
+  font-size: 200%;
+}
+
 
 .col {
   position: relative;
@@ -603,7 +619,7 @@ body {
   width: 85%;
   margin-top: 7px;
   background-color: rgb(255, 252, 252);
-  border: solid 0.2px rgb(75, 69, 69);
+  border: solid 4px rgb(75, 69, 69);
   border-radius: 4px;
 }
 
@@ -661,6 +677,7 @@ body {
 
 
 /* Comienza estilos para Products info */
+
 #container-info>img {
   margin: auto;
   border-radius: 4px;
@@ -704,7 +721,7 @@ body {
   background-color: #69A78E;
   margin: auto;
   padding: 2%;
-  border-radius: 5px;
+  
 }
 
 
@@ -730,6 +747,7 @@ body {
 /* Carousel css */
 
 #carouselIMG {
+  margin: 2%;
   max-width: 800px;
 }
 
@@ -767,3 +785,21 @@ body {
   
 }
 
+/* Vender */
+
+#containerVender{
+  background-color: #69A78E;
+  margin: 2%;
+  border: solid 3px;
+  border-color: #141718;
+  border-radius: 30px;
+}
+
+#containerDatosVender{
+  background-color: #E6E4F6;
+  margin: 5%;
+  padding: 5%;
+  border: solid 3px;
+  border-color: #141718;
+  border-radius: 30px;
+}
