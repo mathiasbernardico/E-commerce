@@ -4,6 +4,7 @@ const URLProducts = `https://japceibal.github.io/emercado-api/cats_products/${it
 const productList = document.getElementById("container-list");
 const busqueda = document.getElementById("busqueda"); //Se genera constante busqueda
 
+
 function productos(listaDeProductos, textobuscado) {
   productList.innerHTML = ""; // Vacía el contenido de productList para volver a generarlo
   for (let producto of listaDeProductos) {

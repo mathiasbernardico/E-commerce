@@ -188,7 +188,5 @@ btn_enviar_comentario.addEventListener('click', function() {
   productos(data.products);
   agregarActivoCarosuel()
 });
-
-
-
 });
+
