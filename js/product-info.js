@@ -52,11 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
           mostrarComentarios(data);
         })
-        fetch(URLCaroucel)
+        fetch(URLRelacionados)
         .then((response) => response.json())
         .then((data) => {
           productos(data.products);
-          agregarActivoCarosuel()
     });
 
     })
@@ -145,48 +144,22 @@ btn_enviar_comentario.addEventListener('click', function() {
 
   });
   
-  //Caroucel
+  //Caroucel relacionados
 
   let item = localStorage.getItem("catID");
-  const URLCaroucel = `https://japceibal.github.io/emercado-api/cats_products/${item}.json`;
-  const carouselContenedor = document.getElementById("carouselExampleControls");
-  const carouselFotos = document.getElementById("carouselFotos");
+  const URLRelacionados = `https://japceibal.github.io/emercado-api/cats_products/${item}.json`;
+  const divRelacionados = document.getElementById("productosRelacionados");
   function productos(listaDeProductos) {
     for (let producto of listaDeProductos) {
         const divNuevoItem = `
-        <div id = "${producto.id}" class="carousel-item">
-        <img src="${producto.image}" class="d-block w-100" width="40px" height="40px" alt="" onclick='localStorage.setItem("id_producto", ${producto.id}); window.location.href = "product-info.html";'>${producto.name}
-        </div>
+        <div id = "${producto.id}">
+          <h2>${producto.name}</h2>
+          <img src="${producto.image}" alt="" onclick='localStorage.setItem("id_producto", ${producto.id}); window.location.href = "product-info.html";'>
+          <h3>${producto.cost}</h3>
         `;
-        carouselFotos.innerHTML += divNuevoItem;
+        divRelacionados.innerHTML += divNuevoItem;
     }
   }
-
   
-
-  function agregarActivoCarosuel(){
-    const arrayDivs = [...document.getElementsByClassName("carousel-item")];
-    const primerDiv = arrayDivs[0];
-    primerDiv.classList.add("active");
-
-    const agregandoBotones = `
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-        `;
-        carouselContenedor.innerHTML += agregandoBotones;
-  }
-  
-  fetch(URLCaroucel)
-.then((response) => response.json())
-.then((data) => {
-  productos(data.products);
-  agregarActivoCarosuel()
-});
 });
 

@@ -729,27 +729,16 @@ body {
 
 /* Carousel css */
 
-#carouselIMG{
-  margin-top: 2%;
+#carouselIMG {
+  max-width: 800px;
 }
 
-.carousel-item img{
-  width: 600px;
-  height: 450px;
-  scroll-snap-type: x mandatory;
-  scroll-snap-align: center;
-}
-
-#carouselFotos img {
+/* Evita que las imágenes del carrusel cambien de tamaño durante las transiciones */
+.carousel-inner img {
   width: 100%;
   height: auto;
 }
 
-#carouselExampleControls{
-  left: 500px;
-  width: 200px;
-  height: 200px;
-}
 
 /* Modo Día */
 .modo-dia {
