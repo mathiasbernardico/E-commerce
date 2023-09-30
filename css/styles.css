@@ -770,8 +770,6 @@ body {
   color: white;
 }
 
-
-
 #div_comment{
   background-color: #69A78E;
   margin: 2% 35%;
@@ -783,6 +781,45 @@ body {
   margin-top: 3%;
   color: #FAF7F6;
   
+}
+
+#productosRelacionados div{
+  margin: 2% 10%;
+  padding: 2%;
+  height: 350px;
+  width: 400px;
+  display: inline-block;
+  background-color: #69A78E;
+  border-radius: 5px;
+  border: solid 3px;
+}
+
+#productosRelacionados img{
+  height: 200px;
+  width: 300px;
+  padding: 2%;
+  margin: 2% 2%;
+}
+
+#productosRelacionados h1{
+  background-color: #A3E0DC;
+  margin: 2% 30%;
+  border-radius: 3px;
+  border: solid 3px;
+  text-align: center;
+  font-family: 'Tektur', cursive;
+}
+
+#productosRelacionados h3{
+  text-align: center;
+  background-color: #162521;
+  color: #E6E4F6;
+}
+
+#productosRelacionados h2{
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bolder;
 }
 
 /* Vender */
