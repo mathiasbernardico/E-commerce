@@ -700,3 +700,15 @@ body {
   width: 200px;
   height: 200px;
 }
+
+/* Modo Día */
+.modo-dia {
+  background-color: white;
+  color: black;
+}
+
+/* Modo Noche */
+.modo-noche {
+  background-color: black;
+  color: white;
+}
