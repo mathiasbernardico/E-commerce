@@ -144,7 +144,7 @@ btn_enviar_comentario.addEventListener('click', function() {
 
   });
   
-  //Caroucel relacionados
+  //Productos relacionados
 
   let item = localStorage.getItem("catID");
   const URLRelacionados = `https://japceibal.github.io/emercado-api/cats_products/${item}.json`;
@@ -155,7 +155,7 @@ btn_enviar_comentario.addEventListener('click', function() {
         <div id = "${producto.id}">
           <h2>${producto.name}</h2>
           <img src="${producto.image}" alt="" onclick='localStorage.setItem("id_producto", ${producto.id}); window.location.href = "product-info.html";'>
-          <h3>${producto.cost}</h3>
+          <h3>U$D ${producto.cost}</h3>
         `;
         divRelacionados.innerHTML += divNuevoItem;
     }
