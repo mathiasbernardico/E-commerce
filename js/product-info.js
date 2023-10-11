@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const URLProduct = `https://japceibal.github.io/emercado-api/products/${idProducto}.json`;
   const URLComentarios = `https://japceibal.github.io/emercado-api/products_comments/${idProducto}.json`;
   const containerInfo = document.getElementById("container-info");
+  const btn_comprar = document.getElementById("btnComprar");
   const btn_enviar_comentario = document.getElementById("enviar_comentario");
   let selectedRating = 1;
   // Funcion para renderizar la info seleccionada en pantalla
@@ -160,6 +161,8 @@ btn_enviar_comentario.addEventListener('click', function() {
         divRelacionados.innerHTML += divNuevoItem;
     }
   }
-  
+  btn_comprar.addEventListener('click', function(){
+
+  });
 });
 
