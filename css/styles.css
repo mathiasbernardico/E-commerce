@@ -10,9 +10,6 @@
 }
 
 /* Estilos para la barra nav */
-#navbar>.container {
-  height: 50px;
-}
 
 nav a {
   text-decoration: none;
@@ -324,7 +321,6 @@ body {
   width: fit-content;
   padding: 20px;
   border-radius: 50px;
-  margin-left: 41%;
   padding-bottom: 30px;
 }
 
@@ -376,7 +372,6 @@ body {
   align-items: center;
   text-align: center;
   justify-content: center;
-  margin-left: 38%;
   box-shadow: 10px 24px 116px 0px #c0e0de;
 }
 
@@ -645,13 +640,15 @@ body {
 
 #div_comment p {
   margin-bottom: 10px;
-  color: #69A78E;
+  color: #ffffff;
+  max-width: 90%;
 }
 
 #comentario {
   resize: both;
   width: 300px;
   height: 100px;
+  max-width: 80%;
   margin-bottom: 10px;
 }
 
@@ -767,7 +764,7 @@ body {
 
 #div_comment{
   background-color: #69A78E;
-  margin: 2% 35%;
+  margin: 2% 20%;
   border-radius: 5%;
   border: solid 3px;
 }
@@ -775,20 +772,15 @@ body {
 #div_comment h2{
   margin-top: 3%;
   color: #FAF7F6;
-  
 }
 
 /* Productos relacionados */
-
-#productosRelacionados div{
-  margin: 2% 10%;
-  padding: 2%;
-  height: 350px;
-  width: 400px;
-  display: inline-block;
-  background-color: #69A78E;
-  border-radius: 5px;
-  border: solid 3px;
+#productosRelacionados{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 #productosRelacionados img{
@@ -798,7 +790,7 @@ body {
   margin: 2% 2%;
 }
 
-#productosRelacionados h1{
+#h1-productos-relacionados{
   background-color: #A3E0DC;
   margin: 2% 30%;
   border-radius: 3px;
@@ -849,4 +841,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+/* Cambios para la responsividad */
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 550px) {
+  #div_comment {
+    margin: 2% 2%
+  }
+  #h1-productos-relacionados{
+    margin: 2% 5%;
+  }
 }
