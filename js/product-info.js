@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const containerInfo = document.getElementById("container-info");
   const btn_comprar = document.getElementById("btnComprar");
   const btn_enviar_comentario = document.getElementById("enviar_comentario");
+  var arrayObjetosComprados = localStorage.getItem('array');
+  arrayObjetosComprados = JSON.parse(arrayObjetosComprados);
+  arrayObjetosComprados = split(arrayObjetosComprados);
+
   let selectedRating = 1;
   // Funcion para renderizar la info seleccionada en pantalla
   function mostrarInfoProducto(obj) {
@@ -161,8 +165,27 @@ btn_enviar_comentario.addEventListener('click', function() {
         divRelacionados.innerHTML += divNuevoItem;
     }
   }
-  btn_comprar.addEventListener('click', function(){
+  //Agregando compras al carrito
 
+  btn_comprar.addEventListener('click', function(){
+    console.log(arrayObjetosComprados);
+    fetch(URLProduct)
+    .then((response) => response.json())
+    .then((data) => {
+    const img = data.images[0];
+    const name = data.name;
+    const cost = data.cost;
+    const agregandoItem = {
+      "id" : idProducto,
+      "name" : name,
+      "img" : img,
+      "cost" : cost
+    };
+    arrayObjetosComprados.push(agregandoItem);
+    localStorage.setItem('items', JSON.stringify(arrayObjetosComprados));
   });
 });
+})
+
+
 

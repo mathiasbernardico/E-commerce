@@ -3,7 +3,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const IDinicial =25801;
     const url = `https://japceibal.github.io/emercado-api/user_cart/${IDinicial}.json`;
-  
+    var arrayItems = localStorage.getItem('items');
+    arrayItems = JSON.parse(arrayItems);
 
     function mostrarDetallesCarrito(data) {
       const articles = data.articles;
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       table.appendChild(thead);
   
       const tbody = document.createElement("tbody");
+      tbody.classList.add("tbody");
       articles.forEach((article) => {
         const row = document.createElement("tr");
     
@@ -68,11 +70,33 @@ document.addEventListener("DOMContentLoaded", function () {
       table.appendChild(tbody);
       container.appendChild(table);
     }
-  
+    function agregandoItems(){
+      const contenedor = document.getElementById("detallesCarrito");
+      console.log(arrayItems);
+      if (arrayItems.length> 0){ 
+      for(let item of arrayItems){
+        const div = `
+        <table class="table">
+          <tbody>
+            <tr>
+            <td><img src="${item.img}" alt=""></td>
+            <td>${item.name}</td>
+            <td>${item.cost}</td>
+            <td><input type="number" name="inputQuantity" id="inputQuantity"></td>
+            <td>${item.cost}</td>
+            </tr>
+          </tbody>
+        </table>
+        `;
+        contenedor.innerHTML += div;
+      }
+      }
+  }
     fetch(url)
       .then(response => response.json())
       .then(data => {
         mostrarDetallesCarrito(data);
+        agregandoItems();
       })
       .catch(error => {
         console.error('Error', error);

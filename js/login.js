@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
   const modoBtn = document.getElementById("modo-btn");
   const contenido = document.getElementById("contenido");
-  
+  var array = [];
+  localStorage,setItem('array', JSON.stringify(array));
+
   // Verifica si el usuario ya ha establecido una preferencia de modo
   const modoActual = localStorage.getItem("modo");
   

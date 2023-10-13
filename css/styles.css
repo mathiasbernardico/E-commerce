@@ -62,9 +62,14 @@ nav a {
 
 #containerCategorias h2{
   color: #141718;
-  font-family: 'Tektur', cursive;
+  font-family: 'Varela Round', sans-serif;
   font-size: 200%;
 }
+
+#containerCategorias h2 p{
+  font-family: 'Varela Round', sans-serif;
+}
+
 
 
 .col {
@@ -930,5 +935,23 @@ td:last-child {
     display: block; 
     margin: 0 auto;
   }
+
+  #btnComprar {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #btnComprar:hover {
+    background-color: darkgreen;
+  }
+  
 
 }
