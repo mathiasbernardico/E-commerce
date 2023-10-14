@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const IDinicial =25801;
     const url = `https://japceibal.github.io/emercado-api/user_cart/${IDinicial}.json`;
 
-    var arrayItems = localStorage.getItem('items');
-    arrayItems = JSON.parse(arrayItems);
+    var arrayItems = JSON.parse(localStorage.getItem('items')) || [];
     // Objeto para almacenar la cantidad de veces que se repite cada ID
     const idContador = {};
 
@@ -28,8 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const idProducto = producto.id;
         const valor = idContador[idProducto];
         const precioTotal = valor * producto.cost;
-    
-        const div = `
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
           <tr>
             <td><img src="${producto.img}" alt=""></td>
             <td>${producto.name}</td>
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td id="costo${producto.id}">${precioTotal}</td>
           </tr>
         `;
-        contenedor.innerHTML += div;
+        contenedor.appendChild(tr);
     
         
     
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
           caputandoTD.textContent = multiplicando;
         }
     
-        let input = document.getElementById(idProducto);
+        let input = tr.querySelector('input[type="number"]');
         input.addEventListener('input', actualizarPrecioTotal);
       });
     }
@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(response => response.json())
       .then(data => {
         //Condicion para que solo agrege una vez el auto de la consigna
-        const condicion = JSON.parse(localStorage.getItem('items'));
-        if (condicion==null){
+        let arrayItems = JSON.parse(localStorage.getItem('items')) || [];
+        if (arrayItems.length === 0) {
           //Cargandolo como un objeto
           const item = data.articles[0];
           const img = item.image;
@@ -72,12 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
           "img" : img,
           "cost" : cost,
           "cantidad" : "1"
-          };
+          }
         //Actualizando array items
-        let arrayObjetosComprados = JSON.parse(localStorage.getItem('items')) || [];
-        arrayObjetosComprados.unshift(agregandoItem);
-        localStorage.setItem('items', JSON.stringify(arrayObjetosComprados));
-        }else{
+        arrayItems.push(agregandoItem);
+        localStorage.setItem('items', JSON.stringify(arrayItems));
+        } else {
         agregandoItems();
         
         }
