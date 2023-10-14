@@ -5,9 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const containerInfo = document.getElementById("container-info");
   const btn_comprar = document.getElementById("btnComprar");
   const btn_enviar_comentario = document.getElementById("enviar_comentario");
-  var arrayObjetosComprados = localStorage.getItem('array');
-  arrayObjetosComprados = JSON.parse(arrayObjetosComprados);
-  arrayObjetosComprados = split(arrayObjetosComprados);
 
   let selectedRating = 1;
   // Funcion para renderizar la info seleccionada en pantalla
@@ -168,10 +165,12 @@ btn_enviar_comentario.addEventListener('click', function() {
   //Agregando compras al carrito
 
   btn_comprar.addEventListener('click', function(){
-    console.log(arrayObjetosComprados);
+  //Obteniendo el array de items, el cual si no existe lo crea
+  let arrayObjetosComprados = JSON.parse(localStorage.getItem('items')) || [];
     fetch(URLProduct)
     .then((response) => response.json())
     .then((data) => {
+    //Cargando la respuesta del fetch como objeto en el array items
     const img = data.images[0];
     const name = data.name;
     const cost = data.cost;
@@ -179,8 +178,10 @@ btn_enviar_comentario.addEventListener('click', function() {
       "id" : idProducto,
       "name" : name,
       "img" : img,
-      "cost" : cost
+      "cost" : cost,
+      "cantidad" : "1"
     };
+    //Actualizando el array items
     arrayObjetosComprados.push(agregandoItem);
     localStorage.setItem('items', JSON.stringify(arrayObjetosComprados));
   });

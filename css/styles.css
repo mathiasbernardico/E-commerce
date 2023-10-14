@@ -49,32 +49,21 @@ nav a {
 
 .tit_cat {
   color: #69A78E;
-  font-family: 'Gabarito', cursive;
 }
 
 #containerCategorias{
   background-color: #c0e0de;
   margin: 2%;
-  border-radius: 8px;
-  border: solid 3px;
-  border-color: #162521;
+  border-radius: 15px;
 }
 
 #containerCategorias h2{
   color: #141718;
-  font-family: 'Varela Round', sans-serif;
   font-size: 200%;
 }
 
-#containerCategorias h2 p{
-  font-family: 'Varela Round', sans-serif;
-}
-
-
-
 .col {
   position: relative;
-
   transition: 1s;
 }
 
@@ -522,6 +511,10 @@ body {
 
 /*estilos para la lista de productos */
 
+#clasificacion_products{
+  margin: 1%;
+}
+
 .pb-5 {
   display: flex;
   flex-direction: column;
@@ -614,7 +607,7 @@ body {
   width: 85%;
   margin-top: 7px;
   background-color: rgb(255, 252, 252);
-  border: solid 4px rgb(75, 69, 69);
+  border: solid 2px rgb(75, 69, 69);
   border-radius: 4px;
 }
 
@@ -689,8 +682,7 @@ body {
   font-family: 'Gabarito', cursive;
   background-color: #69A78E;
   margin: 2% 20% ;
-  border: solid 3px;
-  border-color: #141718;
+  border-radius: 5px;
 }
 
 .div-texto {
@@ -705,13 +697,10 @@ body {
   margin: auto;
   padding: 2%;
   border-radius: 5px;
-  border: solid 3px;
- 
 }
 
 #container-info>p{
   border-radius: 5px;
-  border: solid 3px;
 }
 
 #container-info p{
@@ -720,7 +709,6 @@ body {
   padding: 2%;
   
 }
-
 
 .div-imagenes {
   display: flex;
@@ -738,7 +726,6 @@ body {
   margin: 2% 5%;
   padding: 2%;
   border-radius: 5px;
-  border: solid 3px;
 }
 
 /* Carousel css */
@@ -771,7 +758,6 @@ body {
   background-color: #69A78E;
   margin: 2% 20%;
   border-radius: 5%;
-  border: solid 3px;
 }
 
 #div_comment h2{
@@ -798,8 +784,8 @@ body {
 #h1-productos-relacionados{
   background-color: #A3E0DC;
   margin: 2% 30%;
-  border-radius: 3px;
-  border: solid 3px;
+  padding: 1%;
+  border-radius: 10px;
   text-align: center;
   font-family: 'Tektur', cursive;
 }
@@ -821,17 +807,13 @@ body {
 #containerVender{
   background-color: #69A78E;
   margin: 2%;
-  border: solid 3px;
-  border-color: #141718;
   border-radius: 30px;
 }
 
 #containerDatosVender{
   background-color: #E6E4F6;
-  margin: 5%;
-  padding: 5%;
-  border: solid 3px;
-  border-color: #141718;
+  margin: 1%;
+  padding: 1%;
   border-radius: 30px;
 }
 
@@ -908,6 +890,22 @@ td:last-child {
   text-align: center;
 }
 
+#btnComprar {
+  display: block;
+  margin: 1% auto;
+  padding: 1%;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btnComprar:hover {
+  background-color: darkgreen;
+}
 
 /*Carrito responsivo*/
 @media (max-width: 768px) {
