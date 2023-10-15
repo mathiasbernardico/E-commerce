@@ -52,7 +52,7 @@
                 <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
                 <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
                 <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" id="menuLogout" href="login.html" onclick="logout()">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" id="menuLogout" href="login.html" onclick="logout">Cerrar sesión</a></li>
               </ul>
             </li>
           </ul>
@@ -64,7 +64,7 @@
   <main class="mt-5">
     <form class="container" id="loginForm">
       <h1>Ingresa tus datos</h1>
-      <button id="logout"><img src="img/logout.svg" alt=""></button>
+      <button id="logout"><img src="img/logout.svg" onclick="logout" alt=""></button>
       <div class="div_form">
       <input class="form_login_requerido" name="user" value="" id="usuario" type="user" required>
       <label for="usuario" id="aviso_usuario">Usuario</label>

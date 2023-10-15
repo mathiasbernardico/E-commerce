@@ -58,6 +58,8 @@ function logout() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('nav_user');
     localStorage.removeItem('items');
+    localStorage.setItem('recargada', 'false');
+    
     const login = document.getElementById("login");
     login.textContent = "Login";
   }
