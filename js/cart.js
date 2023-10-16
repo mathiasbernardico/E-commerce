@@ -1,7 +1,6 @@
 // cart.js
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log(localStorage.getItem('items'));
 let recargo = localStorage.getItem('recargada');
   // Condicional para recargar la página una única vez y cargar el primer elemento del carrito
   if (!recargo) {
@@ -19,11 +18,13 @@ let recargo = localStorage.getItem('recargada');
 
   //Funcion para actualizar los subtotales en tiempo real
   function actualizarPrecioTotal(idProducto, valor) {
-      const caputandoTD = document.getElementById("costo" + idProducto);
+      const capturandoTD = document.getElementById("costo" + idProducto);
       const producto = arrayItems.find(item => item.id === idProducto);
+      const dolar = `<b> $USD</b>`;
       if (producto) {
           const multiplicando = valor * producto.cost;
-          caputandoTD.textContent = multiplicando;
+          capturandoTD.textContent = multiplicando;
+          capturandoTD.innerHTML += dolar;
           producto.cantidad = valor;
           localStorage.setItem('items', JSON.stringify(arrayItems));
       }
@@ -34,10 +35,12 @@ let recargo = localStorage.getItem('recargada');
           const idProducto = producto.id;
           const valor = parseFloat(producto.cantidad);
           const input = document.getElementById(idProducto);
+          const dolar = `<b> $USD</b>`;
           input.value = valor;
           const precioTotal = valor * producto.cost;
-          const caputandoTD = document.getElementById("costo" + idProducto);
-          caputandoTD.textContent = precioTotal;
+          const capturandoTD = document.getElementById("costo" + idProducto);
+          capturandoTD.textContent = precioTotal;
+          capturandoTD.innerHTML += dolar;
       });
   }
 
@@ -47,13 +50,13 @@ let recargo = localStorage.getItem('recargada');
           const idProducto = producto.id;
           const valor = idContador[idProducto];
           const precioTotal = valor * producto.cost;
-
+          const dolar = "$USD";
           const tr = document.createElement('tr');
           tr.innerHTML = `
               <tr>
                   <td><img src="${producto.img}" alt=""></td>
                   <td>${producto.name}</td>
-                  <td>${producto.cost}</td>
+                  <td>${producto.cost} <b>$USD</b></td>
                   <td><input type="number" name="inputQuantity" id="${idProducto}" value="${valor}"></td>
                   <td id="costo${producto.id}">${precioTotal}</td>
               </tr>
