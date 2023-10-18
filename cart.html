@@ -81,17 +81,17 @@
           </tbody>
         </table>
       </div>
-      <div class="container-info-envio">
+      <div id="contenedorDeEnvios" class="container-info-envio">
         <form>
           <h4>Tipo de envio</h4>
           <label>
-            <input type="radio" id="premium" name="opcion" value="premium"> Premium 2 a 5 dias (15%)
+            <input type="radio" id="premium" name="opcion" value="1"> Premium 2 a 5 dias (15%)
           </label>
           <label>
-            <input type="radio" id="express" name="opcion" value="express"> Express 5 a 8 dias (7%)
+            <input type="radio" id="express" name="opcion" value="2"> Express 5 a 8 dias (7%)
           </label>
           <label>
-            <input type="radio" id="standard" name="opcion" value="standard"> Standard 12 a 15 dias (5%)
+            <input type="radio" id="standard" name="opcion" value="3"> Standard 12 a 15 dias (5%)
           </label>
           <h4>Direccion de envio</h4>
           <label for="calle">Calle</label>
@@ -101,6 +101,44 @@
           <label for="esquina">Esquina</label>
           <input type="text" id="esquina" name="esquina">
         </form>
+      </div>
+      <div class="container-forma-pago">
+        <h1>Forma de pago</h1>
+        <p>
+          No ha seleccionado
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Seleccionar
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <form id="formPago">
+            <h5>Forma de pago</h5>
+            <hr>
+            <label>
+              <input type="radio" id="credito" name="op" value="credito"> Tarjeta de crédito
+            </label>
+            <hr>
+            <label for="numero-tarjeta">Número de tarjeta</label>
+            <input type="text" id="numero-tarjeta" name="numeroTarjeta" value="">
+            <label for="codigo">Código de seg.</label>
+            <input type="text" id="codigo" name="codigo">
+            <br>
+            <label for="vencimiento">Vencimiento(MM/AA)</label>
+            <input type="text" id="vencimiento" name="vencimiento">
+            <br>
+            <label>
+              <input type="radio" id="transferencia" name="op" value="transferencia"> Transferencia bancaria
+            </label>
+            <hr>
+            <label for="numero-cuenta">Número de cuenta</label>
+            <input type="text" id="numero-cuenta" name="numeroTarjeta" value="">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="calculosGenerales">
+        
       </div>
     </div>
   </main>
