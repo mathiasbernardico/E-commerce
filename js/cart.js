@@ -198,6 +198,130 @@ let recargo = localStorage.getItem('recargada');
       .catch(error => {
           console.error('Error', error);
       });
+
+//código para el boton de comprar y validacion de envio y pago
+const comprarButton = document.getElementById("finalizarCompra");
+const form = document.getElementById("formPago"); 
+
+function showErrorMessage(elementId, message) {
+    const errorElement = document.getElementById(elementId);
+    errorElement.textContent = message;
+    errorElement.style.color = "red";
+    errorElement.style.display = "block";
+}
+
+function hideErrorMessage(elementId) {
+    const errorElement = document.getElementById(elementId);
+    errorElement.textContent = "";
+    errorElement.style.display = "none";
+}
+
+function showSnackbar(message, duration) {
+    const snackbar = document.getElementById("snackbar");
+    snackbar.textContent = message;
+    snackbar.classList.add("show");
+  
+   
+    setTimeout(function () {
+      snackbar.classList.remove("show");
+    }, duration);
+  }
+  
+comprarButton.addEventListener("click", function (event) {
+    event.preventDefault(); 
+
+    const calleInput = document.getElementById("calle");
+    const numeroInput = document.getElementById("numero");
+    const esquinaInput = document.getElementById("esquina");
+    const formaDeEnvioInputs = document.querySelectorAll('input[name="opcion"]');
+    const cantidadInputs = document.querySelectorAll('input[name="inputQuantity"]');
+    const formaDePagoInputs = document.querySelectorAll('input[name="op"]');
+    const numeroTarjetaInput = document.getElementById("numero-tarjeta");
+    const codigoInput = document.getElementById("codigo");
+    const vencimientoInput = document.getElementById("vencimiento");
+    const numeroCuentaInput = document.getElementById("numero-cuenta");
+
+    let allValid = true;
+
+       if (calleInput.value.trim() === "") {
+        showErrorMessage("calleError", "Ingresa una calle");
+        allValid = false;
+    } else {
+        hideErrorMessage("calleError");
+    }
+
+    if (numeroInput.value.trim() === "" || isNaN(numeroInput.value) || parseInt(numeroInput.value) < 0) {
+        showErrorMessage("numeroError", "Ingresa un número válido");
+        allValid = false;
+    } else {
+        hideErrorMessage("numeroError");
+    }
+
+    if (esquinaInput.value.trim() === "") {
+        showErrorMessage("esquinaError", "Ingresa una esquina");
+        allValid = false;
+    } else {
+        hideErrorMessage("esquinaError");
+    }
+
+    let formaDeEnvioSeleccionada = false;
+    formaDeEnvioInputs.forEach((input) => {
+        if (input.checked) {
+            formaDeEnvioSeleccionada = true;
+        }
+    });
+
+    if (!formaDeEnvioSeleccionada) {
+        showErrorMessage("formaEnvioError", "Selecciona una forma de envío");
+        allValid = false;
+    } else {
+        hideErrorMessage("formaEnvioError");
+    }
+
+    cantidadInputs.forEach((input) => {
+        const valor = parseFloat(input.value);
+        if (isNaN(valor) || valor <= 0) {
+            showErrorMessage("cantidadError", "Error");
+            allValid = false;
+        }
+    });
+
+    let formaDePagoSeleccionada = false;
+    formaDePagoInputs.forEach((input) => {
+        if (input.checked) {
+            formaDePagoSeleccionada = true;
+        }
+    });
+
+    if (!formaDePagoSeleccionada) {
+        showErrorMessage("formaPagoError", "Selecciona una forma de pago");
+        allValid = false;
+    } else {
+        hideErrorMessage("formaPagoError");
+    }
+    if (formaDePagoSeleccionada) {
+        const selectedFormaDePago = document.querySelector('input[name="op"]:checked').value;
+
+        if (selectedFormaDePago === "credito") {
+            if (numeroTarjetaInput.value.trim() === "" || codigoInput.value.trim() === "" || vencimientoInput.value.trim() === "") {
+                showErrorMessage("tarjetaError", "Los campos de tarjeta no pueden estar vacíos");
+                allValid = false;
+            } else {
+                hideErrorMessage("tarjetaError");
+            }
+        } else if (selectedFormaDePago === "transferencia") {
+            if (numeroCuentaInput.value.trim() === "") {
+                showErrorMessage("cuentaError", "El número de cuenta no puede estar vacío");
+                allValid = false;
+            } else {
+                hideErrorMessage("cuentaError");
+            }
+        }
+    }
+
+    if (allValid) {
+        showSnackbar("Compra realizada con éxito. ¡Gracias por tu compra!", 5000);
+    }
+  });
 });
 
-  

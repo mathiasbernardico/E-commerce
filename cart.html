@@ -81,6 +81,7 @@
           </tbody>
         </table>
       </div>
+      <div id="snackbar"></div>
       <div id="contenedorDeEnvios" class="container-info-envio">
         <form>
           <h4>Tipo de envio</h4>
@@ -93,19 +94,23 @@
           <label>
             <input type="radio" id="standard" name="opcion" value="3"> Standard 12 a 15 dias (5%)
           </label>
+          <p class="error" id="formaEnvioError"></p>
           <h4>Direccion de envio</h4>
           <label for="calle">Calle</label>
-          <input type="text" id="calle" name="calle">
+          <input type="text" id="calle" name="calle" required title="Ingresa una calle válida">
+          <p class="error" id="calleError"></p>
           <label for="numero">Número</label>
-          <input type="number" id="numero" name="numero">
+          <input type="number" id="numero" name="numero" required pattern="\d+" title="Ingresa un número válido">
+          <p class="error" id="numeroError"></p>
           <label for="esquina">Esquina</label>
-          <input type="text" id="esquina" name="esquina">
+          <input type="text" id="esquina" name="esquina" required title="Ingresa una esquina">
+          <p class="error" id="esquinaError"></p>
         </form>
       </div>
       <div class="container-forma-pago">
         <h1>Forma de pago</h1>
+        <p class="error" id="formaPagoError"></p>
         <p>
-          No ha seleccionado
           <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Seleccionar
           </a>
@@ -127,16 +132,19 @@
             <label for="vencimiento">Vencimiento(MM/AA)</label>
             <input type="text" id="vencimiento" name="vencimiento">
             <br>
+            <p class="error" id="tarjetaError"></p>
             <label>
               <input type="radio" id="transferencia" name="op" value="transferencia"> Transferencia bancaria
             </label>
             <hr>
             <label for="numero-cuenta">Número de cuenta</label>
             <input type="text" id="numero-cuenta" name="numeroTarjeta" value="">
-            </form>
+            <p class="error" id="cuentaError"></p>
+          </form>
           </div>
         </div>
       </div>
+      <button id="finalizarCompra" class="btn btn-primary">Finalizar Compra</button>
       <div id="calculosGenerales">
         
       </div>
