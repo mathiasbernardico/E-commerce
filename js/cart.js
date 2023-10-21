@@ -47,33 +47,75 @@ let recargo = localStorage.getItem('recargada');
   }
 
   function agregandoItems() {
-      const contenedor = document.getElementById("tbody");
-      filtrados.forEach(producto => {
-          const idProducto = producto.id;
-          const valor = idContador[idProducto];
-          const precioTotal = valor * producto.cost;
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-              <tr>
-                  <td><img src="${producto.img}" alt=""></td>
-                  <td>${producto.name}</td>
-                  <td>${producto.cost} <b>$USD</b></td>
-                  <td><input type="number" name="inputQuantity" id="${idProducto}" value="${valor}"></td>
-                  <td id="costo${producto.id}">${precioTotal}</td>
-              </tr>
-          `;
-          contenedor.appendChild(tr);
-          // Agregar evento 'input' a los inputs
-          const input = tr.querySelector('input[type="number"]');
-          input.addEventListener('input', function () {
-              const idProducto = this.id;
-              const valor = parseFloat(this.value);
-              actualizarPrecioTotal(idProducto, valor);
-              CalculosGenerales()
-          });
-      });
-  }
-  
+    const contenedor = document.getElementById("tbody");
+    filtrados.forEach(producto => {
+        const idProducto = producto.id;
+        const valor = idContador[idProducto];
+        const precioTotal = valor * producto.cost;
+        const tr = document.createElement('tr');
+        tr.id = "fila" + idProducto;
+        tr.innerHTML = `
+    <tr>
+        <td><img src="${producto.img}" alt=""></td>
+        <td>${producto.name}</td>
+        <td>${producto.cost} <b>$USD</b></td>
+        <td><input type="number" name="inputQuantity" id="${idProducto}" value="${valor}"></td>
+        <td id="costo${producto.id}">${precioTotal}</td>
+        <td>
+            <button class="eliminar" data-id="${idProducto}">
+                <i class="fa fa-trash"></i>
+            </button>
+        </td>
+    </tr>
+`;
+
+        contenedor.appendChild(tr);
+
+        // Agregar evento 'input' a los inputs
+        const input = tr.querySelector('input[type="number"]');
+        input.addEventListener('input', function () {
+            const idProducto = this.id;
+            const valor = parseFloat(this.value);
+            actualizarPrecioTotal(idProducto, valor);
+            CalculosGenerales();
+        });
+    });
+
+    // Agregar evento 'click' a los botones "Eliminar"
+    const eliminarButtons = document.querySelectorAll(".eliminar");
+    eliminarButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const idProducto = this.getAttribute("data-id");
+            eliminarProducto(idProducto);
+        });
+    });
+}
+
+  function eliminarProducto(idProducto) {
+    const productoIndex = arrayItems.findIndex(item => item.id === idProducto);
+    if (productoIndex !== -1) {
+        const producto = arrayItems[productoIndex];
+        const cantidad = idContador[idProducto];
+
+        // Restar el costo del producto eliminado de los totales
+        const costoProductoEliminado = producto.cost * cantidad;
+        const sumaTotales = JSON.parse(localStorage.getItem('SumasTotales'));
+        const nuevoTotal = sumaTotales - costoProductoEliminado;
+        localStorage.setItem('SumasTotales', JSON.stringify(nuevoTotal));
+
+        // Eliminar el producto del carrito y del contador
+        arrayItems.splice(productoIndex, 1);
+        idContador[idProducto]--;
+
+        // Actualizar el DOM
+        const fila = document.getElementById("fila" + idProducto);
+        fila.remove();
+
+        // Actualizar el almacenamiento local
+        localStorage.setItem('items', JSON.stringify(arrayItems));
+        CalculosGenerales();
+    }
+}
   // Filtra y cuenta los elementos
   let filtrados = arrayItems.filter(item => {
       const id = item.id;
@@ -324,4 +366,5 @@ comprarButton.addEventListener("click", function (event) {
     }
   });
 });
+
 
