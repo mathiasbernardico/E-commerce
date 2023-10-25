@@ -123,7 +123,7 @@ let recargo = localStorage.getItem('recargada');
         break;
         case "3":
             if(e.target.checked){
-                const standard = SumaTotal * 0.5;
+                const standard = SumaTotal * (5/100);
                 const sumaOpt3 = SumaTotal+standard;
                 const divStandard = `
                 <h2>Subtotal: $USD ${SumaTotal}</h2>
