@@ -67,15 +67,19 @@ document.addEventListener("DOMContentLoaded", function () {
             const tr = document.createElement('tr');
             tr.id = "fila" + idProducto;
             tr.innerHTML = `
-                <tr>
-                    <td><img src="${producto.img}" alt=""></td>
-                    <td>${producto.name}</td>
-                    <td>${producto.cost} <b>$USD</b></td>
-                    <td><input type="number" name="inputQuantity" id="${idProducto}" value="${valor}"></td>
-                    <td id="costo${producto.id}">${precioTotal}</td>
-                    <td><button class="eliminar" data-id="${idProducto}"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-            `;
+    <tr>
+        <td><img src="${producto.img}" alt=""></td>
+        <td>${producto.name}</td>
+        <td>${producto.cost} <b>$USD</b></td>
+        <td><input type="number" name="inputQuantity" id="${idProducto}" value="${valor}"></td>
+        <td id="costo${producto.id}">${precioTotal}</td>
+        <td>
+            <button class="eliminar" data-id="${idProducto}">
+                <i class="fa fa-trash"></i> Eliminar
+            </button>
+        </td>
+    </tr>
+`;
             contenedor.appendChild(tr);
   
             // Agregar evento 'input' a los inputs
