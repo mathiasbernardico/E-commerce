@@ -1,90 +1,108 @@
 // cart.js
 
 document.addEventListener("DOMContentLoaded", function () {
-let recargo = localStorage.getItem('recargada');
-  // Condicional para recargar la página una única vez y cargar el primer elemento del carrito
-  if (!recargo) {
-      // La página no se ha recargado todavía, recárgala
-      localStorage.setItem('recargada', 'true');
-      window.location.reload();
-  }
+    let recargo = localStorage.getItem('recargada');
   
-  const IDinicial = "25801";
-  const url = `https://japceibal.github.io/emercado-api/user_cart/${IDinicial}.json`;
-
-  var arrayItems = JSON.parse(localStorage.getItem('items')) || [];
-  // Objeto para almacenar la cantidad de veces que se repite cada ID
-  const idContador = {};
-
-  //Funcion para actualizar los subtotales en tiempo real
-  function actualizarPrecioTotal(idProducto, valor) {
-      const capturandoTD = document.getElementById("costo" + idProducto);
-      const producto = arrayItems.find(item => item.id === idProducto);
-      const dolar = `<b> $USD</b>`;
-      if (producto) {
-          const multiplicando = valor * producto.cost;
-          const ObteniendoSumaTotal = JSON.parse(localStorage.getItem('SumasTotales')) + multiplicando;
-          localStorage.setItem('SumasTotales', JSON.stringify(ObteniendoSumaTotal));
-          capturandoTD.textContent = multiplicando;
-          capturandoTD.innerHTML += dolar;
-          producto.cantidad = valor;
-          localStorage.setItem('items', JSON.stringify(arrayItems));
-      }
-  }
-
-  function restaurarValoresDesdeLocalStorage() {
-      filtrados.forEach(producto => {
-          const idProducto = producto.id;
-          const valor = parseFloat(producto.cantidad);
-          const input = document.getElementById(idProducto);
-          const dolar = `<b> $USD</b>`;
-          input.value = valor;
-          const precioTotal = valor * producto.cost;
-          const capturandoTD = document.getElementById("costo" + idProducto);
-          capturandoTD.textContent = precioTotal;
-          capturandoTD.innerHTML += dolar;
-      });
-  }
-
-  function agregandoItems() {
-      const contenedor = document.getElementById("tbody");
-      filtrados.forEach(producto => {
-          const idProducto = producto.id;
-          const valor = idContador[idProducto];
-          const precioTotal = valor * producto.cost;
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-              <tr>
-                  <td><img src="${producto.img}" alt=""></td>
-                  <td>${producto.name}</td>
-                  <td>${producto.cost} <b>$USD</b></td>
-                  <td><input type="number" name="inputQuantity" id="${idProducto}" value="${valor}"></td>
-                  <td id="costo${producto.id}">${precioTotal}</td>
-              </tr>
-          `;
-          contenedor.appendChild(tr);
-          // Agregar evento 'input' a los inputs
-          const input = tr.querySelector('input[type="number"]');
-          input.addEventListener('input', function () {
-              const idProducto = this.id;
-              const valor = parseFloat(this.value);
-              actualizarPrecioTotal(idProducto, valor);
-              CalculosGenerales()
-          });
-      });
-  }
+    // Condicional para recargar la página una única vez y cargar el primer elemento del carrito
+    if (!recargo) {
+        // La página no se ha recargado todavía, recárgala
+        localStorage.setItem('recargada', 'true');
+        window.location.reload();
+    }
   
-  // Filtra y cuenta los elementos
-  let filtrados = arrayItems.filter(item => {
-      const id = item.id;
-      if (!idContador[id]) {
-          idContador[id] = 1;
-          return true;
-      } else {
-          idContador[id]++;
-          return false;
-      }
-  });
+    const IDinicial = "25801";
+    const url = `https://japceibal.github.io/emercado-api/user_cart/${IDinicial}.json`;
+  
+    var arrayItems = JSON.parse(localStorage.getItem('items')) || [];
+    // Objeto para almacenar la cantidad de veces que se repite cada ID
+    const idContador = {};
+  
+    //Función para actualizar los subtotales en tiempo real
+    function actualizarPrecioTotal(idProducto, valor) {
+        const capturandoTD = document.getElementById("costo" + idProducto);
+        const producto = arrayItems.find(item => item.id === idProducto);
+        const dolar = `<b> $USD</b>`;
+        if (producto) {
+            const multiplicando = valor * producto.cost;
+            const ObteniendoSumaTotal = JSON.parse(localStorage.getItem('SumasTotales')) + multiplicando;
+            localStorage.setItem('SumasTotales', JSON.stringify(ObteniendoSumaTotal));
+            capturandoTD.textContent = multiplicando;
+            capturandoTD.innerHTML += dolar;
+            producto.cantidad = valor;
+            localStorage.setItem('items', JSON.stringify(arrayItems));
+        }
+    }
+  
+    function restaurarValoresDesdeLocalStorage() {
+        filtrados.forEach(producto => {
+            const idProducto = producto.id;
+            const valor = parseFloat(producto.cantidad);
+            const input = document.getElementById(idProducto);
+            const dolar = `<b> $USD</b>`;
+            input.value = valor;
+            const precioTotal = valor * producto.cost;
+            const capturandoTD = document.getElementById("costo" + idProducto);
+            capturandoTD.textContent = precioTotal;
+            capturandoTD.innerHTML += dolar;
+        });
+    }
+  
+    function agregarEventoEliminar() {
+        // Agregar evento 'click' a los botones "Eliminar"
+        const eliminarButtons = document.querySelectorAll(".eliminar");
+        eliminarButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const idProducto = this.getAttribute("data-id");
+                eliminarProducto(idProducto);
+            });
+        });
+    }
+  
+    function agregandoItems() {
+        const contenedor = document.getElementById("tbody");
+        filtrados.forEach(producto => {
+            const idProducto = producto.id;
+            const valor = idContador[idProducto];
+            const precioTotal = valor * producto.cost;
+            const tr = document.createElement('tr');
+            tr.id = "fila" + idProducto;
+            tr.innerHTML = `
+                <tr>
+                    <td><img src="${producto.img}" alt=""></td>
+                    <td>${producto.name}</td>
+                    <td>${producto.cost} <b>$USD</b></td>
+                    <td><input type="number" name="inputQuantity" id="${idProducto}" value="${valor}"></td>
+                    <td id="costo${producto.id}">${precioTotal}</td>
+                    <td><button class="eliminar" data-id="${idProducto}"><i class="fas fa-trash-alt"></i></button></td>
+                </tr>
+            `;
+            contenedor.appendChild(tr);
+  
+            // Agregar evento 'input' a los inputs
+            const input = tr.querySelector('input[type="number"]');
+            input.addEventListener('input', function () {
+                const idProducto = this.id;
+                const valor = parseFloat(this.value);
+                actualizarPrecioTotal(idProducto, valor);
+                CalculosGenerales();
+            });
+        });
+  
+        // Llamar a esta función para agregar los eventos de clic a los botones de eliminación
+        agregarEventoEliminar();
+    }
+  
+    // Filtra y cuenta los elementos
+    let filtrados = arrayItems.filter(item => {
+        const id = item.id;
+        if (!idContador[id]) {
+            idContador[id] = 1;
+            return true;
+        } else {
+            idContador[id]++;
+            return false;
+        }
+    });
 
   function CalculosGenerales(){
     const contenedorTotal = document.getElementById("calculosGenerales");
