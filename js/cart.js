@@ -23,8 +23,7 @@ let recargo = localStorage.getItem('recargada');
       const dolar = `<b> $USD</b>`;
       if (producto) {
           const multiplicando = valor * producto.cost;
-          const ObteniendoSumaTotal = JSON.parse(localStorage.getItem('SumasTotales')) + multiplicando;
-          localStorage.setItem('SumasTotales', JSON.stringify(ObteniendoSumaTotal));
+          localStorage.setItem('SumasTotales', JSON.stringify(multiplicando));
           capturandoTD.textContent = multiplicando;
           capturandoTD.innerHTML += dolar;
           producto.cantidad = valor;
