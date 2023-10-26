@@ -4,7 +4,7 @@
 .site-header {
   font-family: 'Verdana', serif !important;
 }
-
+#formPago{ display: grid; }
 .jumbotron .display-4 {
   font-weight: bold;
 }

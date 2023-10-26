@@ -18,18 +18,37 @@ let recargo = localStorage.getItem('recargada');
 
   //Funcion para actualizar los subtotales en tiempo real
   function actualizarPrecioTotal(idProducto, valor) {
-      const capturandoTD = document.getElementById("costo" + idProducto);
-      const producto = arrayItems.find(item => item.id === idProducto);
-      const dolar = `<b> $USD</b>`;
-      if (producto) {
-          const multiplicando = valor * producto.cost;
-          localStorage.setItem('SumasTotales', JSON.stringify(multiplicando));
-          capturandoTD.textContent = multiplicando;
-          capturandoTD.innerHTML += dolar;
-          producto.cantidad = valor;
-          localStorage.setItem('items', JSON.stringify(arrayItems));
-      }
-  }
+    const dolar = `<b> $USD</b>`;
+    
+    // Calcular el valor total teniendo en cuenta todos los productos
+    let sumaTotal = 0;
+    console.log(arrayItems);
+    arrayItems.forEach(producto => {
+        const multiplicando = valor * producto.cost;
+        sumaTotal += multiplicando;
+        
+        // Actualizar el DOM para este producto
+        const capturandoTD = document.getElementById("costo" + producto.id);
+        capturandoTD.textContent = multiplicando;
+        capturandoTD.innerHTML += dolar;
+        
+        // Actualizar la cantidad en el objeto del producto
+        producto.cantidad = valor;
+    });
+
+    // Actualizar el valor total en el almacenamiento local
+    localStorage.setItem('SumasTotales', JSON.stringify(sumaTotal));
+
+    // Actualizar todos los elementos HTML para los productos
+    arrayItems.forEach(producto => {
+        const capturandoTD = document.getElementById("costo" + producto.id);
+        capturandoTD.innerHTML = (producto.cantidad * producto.cost) + dolar;
+    });
+
+    // Actualizar el almacenamiento local con los cambios en el array de productos
+    localStorage.setItem('items', JSON.stringify(arrayItems));
+}
+
 
   function restaurarValoresDesdeLocalStorage() {
       filtrados.forEach(producto => {
