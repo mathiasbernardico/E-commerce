@@ -989,3 +989,10 @@ td:last-child {
   visibility: visible;
   opacity: 1;
 }
+.eliminar {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
