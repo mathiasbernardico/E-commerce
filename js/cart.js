@@ -16,29 +16,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para actualizar los subtotales en tiempo real
     function actualizarPrecioTotal(idProducto, valor) {
+        let Total = 0;
+        const capturandoTD = document.getElementById("costo" + idProducto);
+        const producto = filtrados.find(item => item.id === idProducto);
         const dolar = `<b> $USD</b>`;
 
-        // Calcular el valor total teniendo en cuenta todos los productos
-        let sumaTotal = 0;
-        arrayItems.forEach(producto => {
-            if (producto.id === idProducto) {
-                producto.cantidad = valor;
-            }
-            const multiplicando = producto.cantidad * producto.cost;
-            sumaTotal += multiplicando;
+        //Volvemos a calcular el total de todos los productos sumados antes de modificar el input
+        for (const producto of filtrados) {
+            const valor = producto.cantidad;
+            const multiplicando = valor * producto.cost;
+            Total += multiplicando;
+        }
 
-            // Actualizar el DOM para este producto
-            const capturandoTD = document.getElementById("costo" + producto.id);
+        // Actualizamos la tabla al momento que se modifica el input
+        if (producto) {
+            const multiplicando = valor * producto.cost;
             capturandoTD.textContent = multiplicando;
             capturandoTD.innerHTML += dolar;
-        });
+            producto.cantidad = valor;
+            localStorage.setItem('items', JSON.stringify(filtrados));
 
-        // Actualizar el valor total en el almacenamiento local
-        localStorage.setItem('SumasTotales', JSON.stringify(sumaTotal));
-        
-        // Calcula y muestra el nuevo subtotal general
-        CalculosGenerales();
+        }
+
+        //Borramos el valor anterior para que no se sume con valores anteriores
+        Total = 0;
+
+        //Volvemos a calcular el total de todos los productos sumados luego de modificar el input
+        for (const producto of filtrados) {
+            const valor = producto.cantidad;
+            const multiplicando = valor * producto.cost;
+            Total += multiplicando;
+        }
+
+        //Seteamos la variable local para que la pueda capturar la funcion que lo incerta en el html
+        localStorage.setItem('SumasTotales', Total);
     }
+    
 
     function restaurarValoresDesdeLocalStorage() {
         filtrados.forEach(producto => {
@@ -98,13 +111,14 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Nueva función para eliminar un producto del carrito
     function eliminarProducto(idProducto) {
-        arrayItems = arrayItems.filter(producto => producto.id !== idProducto);
-        localStorage.setItem('items', JSON.stringify(arrayItems));
+        filtrados = filtrados.filter(producto => producto.id !== idProducto);
+        localStorage.setItem('items', JSON.stringify(filtrados));
 
         // Actualizar la vista del carrito después de eliminar el producto
         const productoEliminado = document.getElementById(idProducto);
         if (productoEliminado) {
             productoEliminado.parentElement.parentElement.remove();
+
         }
 
         CalculosGenerales();
