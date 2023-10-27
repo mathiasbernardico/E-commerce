@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const productoEliminado = document.getElementById(idProducto);
         if (productoEliminado) {
             productoEliminado.parentElement.parentElement.remove();
-
+            actualizarPrecioTotal();
         }
 
         CalculosGenerales();
