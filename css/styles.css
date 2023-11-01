@@ -996,3 +996,15 @@ td:last-child {
   padding: 5px 10px;
   border-radius: 3px;
 }
+
+#perfil{
+  display: grid;
+  width: 300px;
+  padding: 2%;
+}
+
+#img{
+  max-width: 200px;
+  max-height: 200px;
+  padding: 2%;
+}

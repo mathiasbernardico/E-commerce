@@ -25,4 +25,22 @@ document.addEventListener("DOMContentLoaded", function(){
             localStorage.setItem("modo", "modo-dia");
         }
     });
+
+    //Agregar foto de perfil
+    const fotoDefault = "https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg";
+    const foto = document.getElementById("foto");
+    const img = document.getElementById("img");
+    foto.addEventListener("change", e => {
+        if(e.target.files[0]){
+            const lector = new FileReader();
+            lector.onload = function( e ){
+            img.src = e.target.result;   
+            }
+            lector.readAsDataURL(e.target.files[0])
+        }else{
+            img.src = fotoDefault;
+        }
+    });
 });
+
+
