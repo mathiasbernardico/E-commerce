@@ -26,13 +26,39 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 
+    function saveProfileData(){
+        const nameProfile = document.getElementById("nombre-myprofile").value
+        const secondNameProfile = document.getElementById("segundoNombre-myprofile").value
+        const surnameProfile = document.getElementById("apellido-myprofile").value
+        const secondSurnameProfile = document.getElementById("segundoApellido-myprofile").value
+        const phoneProfile = document.getElementById("telefono-myprofile").value
+        const emailProfile = document.getElementById("email-myprofile").value
+        const infoProfile = {
+            name: nameProfile,
+            secondName: secondNameProfile,
+            surname: surnameProfile,
+            secondSurname:secondSurnameProfile,
+            phone: phoneProfile
+        }
+        if(nameProfile && surnameProfile && emailProfile){
+            localStorage.setItem("infoProfile", JSON.stringify(infoProfile))
+        }else {
+            alert("Por favor completa los campos requeridos")
+        }
+    }
+
+    const userProfileForm = document.getElementById("userProfileForm")
+    userProfileForm.addEventListener("submit", function (e){
+        e.preventDefault()
+        saveProfileData()
+    })
     const emailInput = document.getElementById("email-myprofile")
     const loggedEmail = localStorage.getItem("nav_user")
     emailInput.value = loggedEmail
     //Agregar foto de perfil
     const fotoDefault = localStorage.getItem("imagenSubida") ||
     "https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg";
-    const img = document.getElementById("img");
+    const img = document.getElementById("img-profile");
     const foto = document.getElementById("foto");
     img.src = fotoDefault
     foto.addEventListener("change", e => {

@@ -81,46 +81,48 @@
     <div class="container mt-1">
       <div class="row justify-content-center">
         <div class="col-md-12 w-75 d-lg-block">
-          <h1 class="text-center mb-4">Informacion Personal</h1>
-          <form id="userProfileForm flex-row">
+          <div class="d-flex justify-content-between align-items-center">
+            <h1 class="text-center mb-4">Perfil</h1>
+            <img id="img-profile" src="https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg" alt="avatar">  
+          </div>
+          <form id="userProfileForm">
             <div class="row">
               <div class="mb-3 col-6">
-                <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" required>
+                <label for="nombre" class="form-label">Nombre*</label>
+                <input type="text" id="nombre-myprofile" name="nombre" class="form-control" required>
               </div>
               <div class="mb-3 col-6">
-                <label for="segundoNombre" class="form-label">Segundo Nombre:</label>
-                <input type="text" id="segundoNombre" name="segundoNombre" class="form-control">
+                <label for="segundoNombre" class="form-label">Segundo Nombre</label>
+                <input type="text" id="segundoNombre-myprofile" name="segundoNombre" class="form-control">
               </div>
               <div class="mb-3 col-6"">
-                <label for="apellido" class="form-label">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" class="form-control" required>
+                <label for="apellido" class="form-label">Apellido*</label>
+                <input type="text" id="apellido-myprofile" name="apellido" class="form-control" required>
               </div>
               <div class="mb-3 col-6"">
-                <label for="segundoApellido" class="form-label">Segundo Apellido:</label>
-                <input type="text" id="segundoApellido" name="segundoApellido" class="form-control">
+                <label for="segundoApellido" class="form-label">Segundo Apellido</label>
+                <input type="text" id="segundoApellido-myprofile" name="segundoApellido" class="form-control">
               </div>
               <div class="mb-3 col-6"">
-                <label for="email" class="form-label">E-mail:</label>
+                <label for="email" class="form-label">E-mail*</label>
                 <input type="email" id="email-myprofile" name="email" class="form-control" required>
               </div>
               <div class="mb-3 col-6"">
-                <label for="telefono" class="form-label">Teléfono de contacto:</label>
-                <input type="tel" id="telefono" name="telefono" class="form-control">
+                <label for="telefono" class="form-label">Teléfono de contacto</label>
+                <input type="tel" id="telefono-myprofile" name="telefono" class="form-control">
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar Perfil</button>
+            <div id="fotoPerfil">
+              <input type="file" id="foto" name="foto">
+              <script src="my-profile.js"></script>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Guardar Perfil</button>
           </form>
         </div>
       </div>
     </div>
     <div class="containerPerfil">
       <div id="perfil">
-        <div id="fotoPerfil">
-          <img id="img" src="https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg" alt="avatar">  
-          <input type="file" id="foto" name="foto">
-          <script src="my-profile.js"></script>
-        </div>
       </div>
     </div>
   </main>
