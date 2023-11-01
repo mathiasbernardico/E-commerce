@@ -27,14 +27,17 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     //Agregar foto de perfil
-    const fotoDefault = "https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg";
-    const foto = document.getElementById("foto");
+    const fotoDefault = localStorage.getItem("imagenSubida") ||
+    "https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg";
     const img = document.getElementById("img");
+    const foto = document.getElementById("foto");
+    img.src = fotoDefault
     foto.addEventListener("change", e => {
         if(e.target.files[0]){
             const lector = new FileReader();
             lector.onload = function( e ){
-            img.src = e.target.result;   
+            img.src = e.target.result;
+            localStorage.setItem("imagenSubida", e.target.result);
             }
             lector.readAsDataURL(e.target.files[0])
         }else{
