@@ -338,7 +338,7 @@ body {
   margin-top: 20px;
 }
 
-#aviso_usuario {
+#aviso_email {
   position: absolute;
   bottom: 3px;
   left: 60px;
@@ -346,8 +346,8 @@ body {
   color: #69A78E;
 }
 
-#usuario:focus+#aviso_usuario,
-#usuario:valid+#aviso_usuario {
+#email:focus+#aviso_email,
+#email:valid+#aviso_email {
   transform: translateY(-100%);
   transition: 0.5s;
   font-size: 0px;

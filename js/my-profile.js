@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 
+    const emailInput = document.getElementById("email-myprofile")
+    const loggedEmail = localStorage.getItem("nav_user")
+    emailInput.value = loggedEmail
     //Agregar foto de perfil
     const fotoDefault = localStorage.getItem("imagenSubida") ||
     "https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg";

@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function datos_requeridos(){
       
-    user = document.getElementById("usuario").value;
+    user = document.getElementById("email").value;
     pass  = document.getElementById("contra").value;
     capcha  = document.getElementById("capcha").checked;
 
   if (user == ''||pass == ''||capcha == false) {
-    alert('Usuario, contraseña y capcha son obligatorios');
+    alert('Email, contraseña y capcha son obligatorios');
     return false;
   }else if (user != ''&&pass != ''&&capcha){
   localStorage.setItem('nav_user', user);
@@ -59,7 +59,6 @@ function logout() {
     localStorage.removeItem('nav_user');
     localStorage.removeItem('items');
     localStorage.setItem('recargada', 'false');
-    
     const login = document.getElementById("login");
     login.textContent = "Login";
   }
@@ -74,9 +73,9 @@ function logout() {
     switch (e.target.name) {
       case "user":
         if(e.target.value !== ""){
-          document.getElementById("usuario").classList.remove("incorrecto");
+          document.getElementById("email").classList.remove("incorrecto");
         }else{
-          document.getElementById("usuario").classList.add("incorrecto");
+          document.getElementById("email").classList.add("incorrecto");
         }
       break;
       case "pass":
@@ -87,7 +86,6 @@ function logout() {
         }
       break;
       case "capcha":
-        
       break;
     }
   }
