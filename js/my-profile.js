@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 
+    // Funcion que guarda los datos del perfil ingresados
     function saveProfileData(){
         const nameProfile = document.getElementById("nombre-myprofile").value
         const secondNameProfile = document.getElementById("segundoNombre-myprofile").value
@@ -42,19 +43,44 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         if(nameProfile && surnameProfile && emailProfile){
             localStorage.setItem("infoProfile", JSON.stringify(infoProfile))
+            alert("Su informacion se guardo correctamente, usted Sabpe")
         }else {
             alert("Por favor completa los campos requeridos")
         }
     }
-
     const userProfileForm = document.getElementById("userProfileForm")
+        // Aca hacemos uso de la funcion saveProfileData cuando se envia el formulario
     userProfileForm.addEventListener("submit", function (e){
         e.preventDefault()
         saveProfileData()
     })
+    // Aca se rellenamos el input email con el email que se loggeo el usuario previamente
     const emailInput = document.getElementById("email-myprofile")
     const loggedEmail = localStorage.getItem("nav_user")
     emailInput.value = loggedEmail
+    // Creamos funcion para rellenar los campos en caso que exista la data en el localStorage
+    function rellenarInfoFromLocalStorage() {
+        const nameProfile = document.getElementById("nombre-myprofile")
+        const secondNameProfile = document.getElementById("segundoNombre-myprofile")
+        const surnameProfile = document.getElementById("apellido-myprofile")
+        const secondSurnameProfile = document.getElementById("segundoApellido-myprofile")
+        const phoneProfile = document.getElementById("telefono-myprofile")
+        // obtengo la info en formato json
+        const infoFromLocalStorageJson = localStorage.getItem("infoProfile")
+        // la convierto usando JSON.parse a un objeto nuevamente
+        const infoFromLocalStorage = JSON.parse(infoFromLocalStorageJson)
+        console.log(infoFromLocalStorage)
+        if(infoFromLocalStorage){
+            nameProfile.value = infoFromLocalStorage.name
+            secondNameProfile.value = infoFromLocalStorage.secondName
+            surnameProfile.value = infoFromLocalStorage.surname
+            secondSurnameProfile.value = infoFromLocalStorage.secondSurname
+            phoneProfile.value = infoFromLocalStorage.phone
+        }
+    }
+    // Llamamos la funcion 
+    rellenarInfoFromLocalStorage()
+
     //Agregar foto de perfil
     const fotoDefault = localStorage.getItem("imagenSubida") ||
     "https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg";
