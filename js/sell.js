@@ -10,7 +10,7 @@ let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
 document.addEventListener("DOMContentLoaded", function(){
-    const modoBtn = document.getElementById("modo-btn");
+    const modoBtn = document.getElementById("mode-btn");
     const content = document.getElementById("content");
     
     // Verifica si el usuario ya ha establecido una preferencia de modo
