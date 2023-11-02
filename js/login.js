@@ -1,43 +1,43 @@
 document.addEventListener("DOMContentLoaded", function(){
-  const modoBtn = document.getElementById("modo-btn");
-  const contenido = document.getElementById("contenido");
+  const modeBtn = document.getElementById("mode-btn");
+  const content = document.getElementById("content");
 
 
   // Verifica si el usuario ya ha establecido una preferencia de modo
-  const modoActual = localStorage.getItem("modo");
+  const currentMode = localStorage.getItem("mode");
   
   // Si no hay una preferencia previa, usa el "Modo Día" por defecto
-  if (!modoActual || modoActual === "modo-dia") {
-      contenido.classList.add("modo-dia");
+  if (!currentMode || currentMode === "day-mode") {
+    content.classList.add("day-mode");
   } else {
       // Si hay una preferencia previa, aplica el modo correspondiente
-      contenido.classList.add("modo-noche");
+      content.classList.add("night-mode");
   }
   
   // Agrega un evento de clic al botón para cambiar el modo
-  modoBtn.addEventListener("click", function () {
-      if (contenido.classList.contains("modo-dia")) {
-          contenido.classList.remove("modo-dia");
-          contenido.classList.add("modo-noche");
-          localStorage.setItem("modo", "modo-noche");
+  modeBtn.addEventListener("click", function () {
+      if (content.classList.contains("day-mode")) {
+        content.classList.remove("day-mode");
+        content.classList.add("night-mode");
+          localStorage.setItem("mode", "night-mode");
       } else {
-          contenido.classList.remove("modo-noche");
-          contenido.classList.add("modo-dia");
-          localStorage.setItem("modo", "modo-dia");
+        content.classList.remove("night-mode");
+        content.classList.add("day-mode");
+          localStorage.setItem("mode", "day-mode");
       }
   });
 });
 
-function datos_requeridos(){
+function required_data(){
       
     user = document.getElementById("email").value;
-    pass  = document.getElementById("contra").value;
-    capcha  = document.getElementById("capcha").checked;
+    pass  = document.getElementById("password").value;
+    captcha  = document.getElementById("captcha").checked;
 
-  if (user == ''||pass == ''||capcha == false) {
-    alert('Email, contraseña y capcha son obligatorios');
+  if (user == ''||pass == ''||captcha == false) {
+    alert('Email, contraseña y captcha son obligatorios');
     return false;
-  }else if (user != ''&&pass != ''&&capcha){
+  }else if (user != ''&&pass != ''&&captcha){
   localStorage.setItem('nav_user', user);
   window.location.replace('https://mathiasbernardico.github.io/workspace-inicial');
   localStorage.setItem('isLoggedIn', 'true');
@@ -45,7 +45,7 @@ function datos_requeridos(){
   }
 }
 
-const formulario = document.getElementById('loginForm');
+const form = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -58,7 +58,7 @@ function logout() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('nav_user');
     localStorage.removeItem('items');
-    localStorage.setItem('recargada', 'false');
+    localStorage.setItem('reloaded', 'false');
     const login = document.getElementById("login");
     login.textContent = "Login";
   }
@@ -69,27 +69,27 @@ function logout() {
   });
 
   const imputs = document.querySelectorAll('#loginForm input');
-  const validadFormularios = (e) => {
+  const formValidation = (e) => {
     switch (e.target.name) {
       case "user":
         if(e.target.value !== ""){
-          document.getElementById("email").classList.remove("incorrecto");
+          document.getElementById("email").classList.remove("incorrect");
         }else{
-          document.getElementById("email").classList.add("incorrecto");
+          document.getElementById("email").classList.add("incorrect");
         }
       break;
       case "pass":
         if(e.target.value !== ""){
-          document.getElementById("contra").classList.remove("incorrecto");
+          document.getElementById("password").classList.remove("incorrect");
         }else{
-          document.getElementById("contra").classList.add("incorrecto");
+          document.getElementById("password").classList.add("incorrect");
         }
       break;
-      case "capcha":
+      case "captcha":
       break;
     }
   }
   imputs.forEach((imputs) => {
-    imputs.addEventListener('keyup', validadFormularios);
-    imputs.addEventListener('blur', validadFormularios);
+    imputs.addEventListener('keyup', formValidation);
+    imputs.addEventListener('blur', formValidation);
   });

@@ -325,7 +325,7 @@ body {
   overflow: hidden;
 }
 
-#form_login_requerido {
+#form_login_required {
   width: 100%;
   height: 100%;
 }
@@ -369,7 +369,7 @@ body {
   box-shadow: 10px 24px 116px 0px #c0e0de;
 }
 
-.incorrecto {
+.incorrect {
   background-color: rgb(232, 94, 94);
 }
 
@@ -392,6 +392,7 @@ body {
   color: #162521;
   border-radius: 50px;
   margin-top: 10px;
+  margin-bottom: 15px;
   border: 1px solid;
   overflow: hidden;
   position: relative;
@@ -511,7 +512,7 @@ body {
 
 /*estilos para la lista de productos */
 
-#clasificacion_products{
+#products_class{
   margin: 1%;
 }
 
@@ -743,13 +744,13 @@ body {
 
 
 /* Modo Día */
-.modo-dia {
+.day-mode {
   background-color: white;
   color: black;
 }
 
 /* Modo Noche */
-.modo-noche {
+.night-mode {
   background-color: black;
   color: white;
 }

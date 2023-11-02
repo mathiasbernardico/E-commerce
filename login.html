@@ -26,7 +26,7 @@
   </script>
 </head>
 <body>
-  <div id="contenido" class="modo-dia">
+  <div id="content" class="day-mode">
     <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
       <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -66,27 +66,27 @@
       <h1>Ingresa tus datos</h1>
       <button id="logout"><img src="img/logout.svg" onclick="logout" alt=""></button>
       <div class="div_form">
-      <input class="form_login_requerido" name="email" value="" id="email" type="email" required>
+      <input class="form_login_required" name="email" value="" id="email" type="email" required>
       <label for="email" id="aviso_email">email</label>
       </div>
       <div class="div_form">
-      <input class="form_login_requerido" name="pass" value="" id="contra" type="password" required>
-      <label for="contra" id="aviso_contra">Contraseña</label>
+      <input class="form_login_required" name="pass" value="" id="password" type="password" required>
+      <label for="password" id="aviso_contra">Contraseña</label>
       </div>
       <p><a href="#">¿Olvidaste tu contraseña?</a></p>
       <div class="checkbox_div">
         <label>
-        <input class="form_login_requerido" type="checkbox" value="">
+        <input class="form_login_required" type="checkbox" value="">
         "Recordar email y Contraseña"
         </label>
       </div>
-      <div class="checkbox_div capcha">
-        <label id="aviso_capcha">
-          <input class="form_login_requerido" name="capcha" type="checkbox" id="capcha" required>
+      <div class="checkbox_div captcha">
+        <label id="aviso_captcha">
+          <input class="form_login_required" name="captcha" type="checkbox" id="captcha" required>
           "No soy un robot"
         </label>
       </div>
-      <button id="btn_login" type="submit" onclick="datos_requeridos()">Ingresar</button>
+      <button id="btn_login" type="submit" onclick="required_data()">Ingresar</button>
     </form>
   </main>
   <footer class="text-muted">

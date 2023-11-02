@@ -32,7 +32,7 @@ function productos(listaDeProductos, textobuscado) {
   }
 }
 
-function clasificacion_products(dato) {
+function products_class(dato) {
   //Creamos la funcion para clasificar el producto en funcion del dato
   fetch(URLProducts)
     .then((response) => response.json())

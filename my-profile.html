@@ -41,7 +41,7 @@
   </script>
 </head>
 <body>
-  <div id="contenido" class="modo-dia">
+  <div id="content" class="day-mode">
   <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -67,7 +67,7 @@
               <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
               <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
-              <li><button class="dropdown-item" id="modo-btn">Cambiar modo</button> </li>
+              <li><button class="dropdown-item" id="mode-btn">Cambiar modo</button> </li>
               <li><a class="dropdown-item" id="menuLogout" href="login.html" onclick="logout">Cerrar sesión</a></li>
             </ul>
           </li>
@@ -88,32 +88,32 @@
           <form id="userProfileForm">
             <div class="row">
               <div class="mb-3 col-6">
-                <label for="nombre" class="form-label">Nombre*</label>
-                <input type="text" id="nombre-myprofile" name="nombre" class="form-control" required>
+                <label for="name" class="form-label">Nombre*</label>
+                <input type="text" id="name-myprofile" name="name" class="form-control" required>
               </div>
               <div class="mb-3 col-6">
-                <label for="segundoNombre" class="form-label">Segundo Nombre</label>
-                <input type="text" id="segundoNombre-myprofile" name="segundoNombre" class="form-control">
+                <label for="middleName" class="form-label">Segundo Nombre</label>
+                <input type="text" id="middleName-myprofile" name="middleName" class="form-control">
               </div>
-              <div class="mb-3 col-6"">
-                <label for="apellido" class="form-label">Apellido*</label>
-                <input type="text" id="apellido-myprofile" name="apellido" class="form-control" required>
+              <div class="mb-3 col-6">
+                <label for="surname" class="form-label">Apellido*</label>
+                <input type="text" id="surname-myprofile" name="surname" class="form-control" required>
               </div>
-              <div class="mb-3 col-6"">
-                <label for="segundoApellido" class="form-label">Segundo Apellido</label>
-                <input type="text" id="segundoApellido-myprofile" name="segundoApellido" class="form-control">
+              <div class="mb-3 col-6">
+                <label for="secondSurname" class="form-label">Segundo Apellido</label>
+                <input type="text" id="secondSurname-myprofile" name="secondSurname" class="form-control">
               </div>
-              <div class="mb-3 col-6"">
+              <div class="mb-3 col-6">
                 <label for="email" class="form-label">E-mail*</label>
                 <input type="email" id="email-myprofile" name="email" class="form-control" required>
               </div>
-              <div class="mb-3 col-6"">
-                <label for="telefono" class="form-label">Teléfono de contacto</label>
-                <input type="tel" id="telefono-myprofile" name="telefono" class="form-control">
+              <div class="mb-3 col-6">
+                <label for="phone" class="form-label">Teléfono de contacto</label>
+                <input type="tel" id="phone-myprofile" name="phone" class="form-control">
               </div>
             </div>
-            <div id="fotoPerfil">
-              <input type="file" id="foto" name="foto">
+            <div id="profilePicture">
+              <input type="file" id="picture" name="picture">
               <script src="my-profile.js"></script>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Guardar Perfil</button>

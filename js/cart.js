@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let recargo = localStorage.getItem('recargada');
+    let recargo = localStorage.getItem('reloaded');
     // Condicional para recargar la página una única vez y cargar el primer elemento del carrito
     if (!recargo) {
         // La página no se ha recargado todavía, recárgala
-        localStorage.setItem('recargada', 'true');
+        localStorage.setItem('reloaded', 'true');
         window.location.reload();
     }
 

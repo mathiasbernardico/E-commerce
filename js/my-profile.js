@@ -1,38 +1,38 @@
 document.addEventListener("DOMContentLoaded", function(){
-    const modoBtn = document.getElementById("modo-btn");
-    const contenido = document.getElementById("contenido");
+    const modeBtn = document.getElementById("mode-btn");
+    const content = document.getElementById("content");
     
     // Verifica si el usuario ya ha establecido una preferencia de modo
-    const modoActual = localStorage.getItem("modo");
+    const currentMode = localStorage.getItem("mode");
     
     // Si no hay una preferencia previa, usa el "Modo Día" por defecto
-    if (!modoActual || modoActual === "modo-dia") {
-        contenido.classList.add("modo-dia");
+    if (!currentMode || currentMode === "day-mode") {
+        content.classList.add("day-mode");
     } else {
         // Si hay una preferencia previa, aplica el modo correspondiente
-        contenido.classList.add("modo-noche");
+        content.classList.add("night-mode");
     }
     
     // Agrega un evento de clic al botón para cambiar el modo
-    modoBtn.addEventListener("click", function () {
-        if (contenido.classList.contains("modo-dia")) {
-            contenido.classList.remove("modo-dia");
-            contenido.classList.add("modo-noche");
-            localStorage.setItem("modo", "modo-noche");
+    modeBtn.addEventListener("click", function () {
+        if (content.classList.contains("day-mode")) {
+            content.classList.remove("day-mode");
+            content.classList.add("night-mode");
+            localStorage.setItem("mode", "night-mode");
         } else {
-            contenido.classList.remove("modo-noche");
-            contenido.classList.add("modo-dia");
-            localStorage.setItem("modo", "modo-dia");
+            content.classList.remove("night-mode");
+            content.classList.add("day-mode");
+            localStorage.setItem("mode", "day-mode");
         }
     });
 
     // Funcion que guarda los datos del perfil ingresados
     function saveProfileData(){
-        const nameProfile = document.getElementById("nombre-myprofile").value
-        const secondNameProfile = document.getElementById("segundoNombre-myprofile").value
-        const surnameProfile = document.getElementById("apellido-myprofile").value
-        const secondSurnameProfile = document.getElementById("segundoApellido-myprofile").value
-        const phoneProfile = document.getElementById("telefono-myprofile").value
+        const nameProfile = document.getElementById("name-myprofile").value
+        const secondNameProfile = document.getElementById("middleName-myprofile").value
+        const surnameProfile = document.getElementById("surname-myprofile").value
+        const secondSurnameProfile = document.getElementById("secondSurname-myprofile").value
+        const phoneProfile = document.getElementById("phone-myprofile").value
         const emailProfile = document.getElementById("email-myprofile").value
         const infoProfile = {
             name: nameProfile,
@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", function(){
     emailInput.value = loggedEmail
     // Creamos funcion para rellenar los campos en caso que exista la data en el localStorage
     function rellenarInfoFromLocalStorage() {
-        const nameProfile = document.getElementById("nombre-myprofile")
-        const secondNameProfile = document.getElementById("segundoNombre-myprofile")
-        const surnameProfile = document.getElementById("apellido-myprofile")
-        const secondSurnameProfile = document.getElementById("segundoApellido-myprofile")
-        const phoneProfile = document.getElementById("telefono-myprofile")
+        const nameProfile = document.getElementById("name-myprofile")
+        const secondNameProfile = document.getElementById("middleName-myprofile")
+        const surnameProfile = document.getElementById("surname-myprofile")
+        const secondSurnameProfile = document.getElementById("secondSurname-myprofile")
+        const phoneProfile = document.getElementById("phone-myprofile")
         // obtengo la info en formato json
         const infoFromLocalStorageJson = localStorage.getItem("infoProfile")
         // la convierto usando JSON.parse a un objeto nuevamente
@@ -82,21 +82,21 @@ document.addEventListener("DOMContentLoaded", function(){
     rellenarInfoFromLocalStorage()
 
     //Agregar foto de perfil
-    const fotoDefault = localStorage.getItem("imagenSubida") ||
+    const defaultPic = localStorage.getItem("uploadedPicture") ||
     "https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg";
     const img = document.getElementById("img-profile");
-    const foto = document.getElementById("foto");
-    img.src = fotoDefault
-    foto.addEventListener("change", e => {
+    const picture = document.getElementById("picture");
+    img.src = defaultPic
+    picture.addEventListener("change", e => {
         if(e.target.files[0]){
             const lector = new FileReader();
             lector.onload = function( e ){
             img.src = e.target.result;
-            localStorage.setItem("imagenSubida", e.target.result);
+            localStorage.setItem("uploadedPicture", e.target.result);
             }
             lector.readAsDataURL(e.target.files[0])
         }else{
-            img.src = fotoDefault;
+            img.src = defaultPic;
         }
     });
 });

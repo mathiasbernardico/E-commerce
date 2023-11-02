@@ -11,29 +11,29 @@ let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
 document.addEventListener("DOMContentLoaded", function(){
     const modoBtn = document.getElementById("modo-btn");
-    const contenido = document.getElementById("contenido");
+    const content = document.getElementById("content");
     
     // Verifica si el usuario ya ha establecido una preferencia de modo
-    const modoActual = localStorage.getItem("modo");
+    const currentMode = localStorage.getItem("modo");
     
     // Si no hay una preferencia previa, usa el "Modo Día" por defecto
-    if (!modoActual || modoActual === "modo-dia") {
-        contenido.classList.add("modo-dia");
+    if (!currentMode || currentMode === "day-mode") {
+        content.classList.add("day-mode");
     } else {
         // Si hay una preferencia previa, aplica el modo correspondiente
-        contenido.classList.add("modo-noche");
+        content.classList.add("night-mode");
     }
     
     // Agrega un evento de clic al botón para cambiar el modo
     modoBtn.addEventListener("click", function () {
-        if (contenido.classList.contains("modo-dia")) {
-            contenido.classList.remove("modo-dia");
-            contenido.classList.add("modo-noche");
-            localStorage.setItem("modo", "modo-noche");
+        if (content.classList.contains("day-mode")) {
+            content.classList.remove("day-mode");
+            content.classList.add("night-mode");
+            localStorage.setItem("modo", "night-mode");
         } else {
-            contenido.classList.remove("modo-noche");
-            contenido.classList.add("modo-dia");
-            localStorage.setItem("modo", "modo-dia");
+            content.classList.remove("night-mode");
+            content.classList.add("day-mode");
+            localStorage.setItem("modo", "day-mode");
         }
     });
 });

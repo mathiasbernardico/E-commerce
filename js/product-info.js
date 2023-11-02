@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const URLComentarios = `https://japceibal.github.io/emercado-api/products_comments/${idProducto}.json`;
   const containerInfo = document.getElementById("container-info");
   const btn_comprar = document.getElementById("btnComprar");
-  const btn_enviar_comentario = document.getElementById("enviar_comentario");
+  const btn_publish_comment = document.getElementById("publish_comment");
 
   let selectedRating = 1;
   // Funcion para renderizar la info seleccionada en pantalla
@@ -127,7 +127,7 @@ function highlightStars(rating) {
     });
 }
 //Creamos el comentario y lo insertamos localmente
-btn_enviar_comentario.addEventListener('click', function() {
+btn_publish_comment.addEventListener('click', function() {
     const user = localStorage.getItem('nav_user');
     const description = document.getElementById('comentario').value;
     const f = new Date();
