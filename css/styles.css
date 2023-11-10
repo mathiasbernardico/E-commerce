@@ -4,9 +4,24 @@
 .site-header {
   font-family: 'Verdana', serif !important;
 }
-#formPago{ display: grid; }
+
+
+/*Estilo de pago del carrito*/
+#formPago{ display: grid; 
+background-color: #8bafa1;
+padding-bottom: 5%;
+}
 .jumbotron .display-4 {
   font-weight: bold;
+}
+
+#formPago input[type="text"] {
+margin-left: 10%;
+margin-right: 10%;
+}
+
+#calculosGenerales{
+  color: #3c474b;
 }
 
 /* Estilos para la barra nav */

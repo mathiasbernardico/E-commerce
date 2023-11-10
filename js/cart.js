@@ -395,6 +395,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (allValid) {
             showSnackbar("Compra realizada con éxito. ¡Gracias por tu compra!", 5000);
+            var snackbar = document.getElementById("snackbar");
+            if (snackbar) {
+                window.scrollTo({ top: snackbar.offsetTop - (window.innerHeight /2), behavior: "smooth" });
+            }
         }
     });
 });
