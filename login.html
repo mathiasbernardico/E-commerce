@@ -61,36 +61,29 @@
         </div>
       </div>
     </nav>
+    <div id="contenedorlogin">
   <main class="mt-5">
     <form class="container" id="loginForm">
       <h1>Ingresa tus datos</h1>
       <button id="logout"><img src="img/logout.svg" onclick="logout" alt=""></button>
       <div class="div_form">
-      <input class="form_login_required" name="email" value="" id="email" type="email" required>
-      <label for="email" id="aviso_email">email</label>
+      <input class="form_login_required" name="name" value="" id="name" type="name" required>
+      <label for="name" id="aviso_name">Email</label>
       </div>
       <div class="div_form">
-      <input class="form_login_required" name="pass" value="" id="password" type="password" required>
-      <label for="password" id="aviso_contra">Contraseña</label>
+      <input class="form_login_required" name="password" value="" id="password" type="password" required>
+      <label for="password" id="alertPass">Contraseña</label>
       </div>
-      <p><a href="#">¿Olvidaste tu contraseña?</a></p>
-      <div class="checkbox_div">
-        <label>
-        <input class="form_login_required" type="checkbox" value="">
-        "Recordar email y Contraseña"
-        </label>
-      </div>
-      <div class="checkbox_div captcha">
-        <label id="aviso_captcha">
-          <input class="form_login_required" name="captcha" type="checkbox" id="captcha" required>
-          "No soy un robot"
-        </label>
+      <div class="div_form" id="checkbox_div">
+        <input class="form_login_required" name="captcha" type="checkbox" id="captcha" required>
+        <p>No soy un robot</p>
       </div>
       <button id="btn_login" type="submit" onclick="required_data()">Ingresar</button>
     </form>
   </main>
+</div>
   <footer class="text-muted">
-    <div class="container">
+    <div class="containerBanner">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
