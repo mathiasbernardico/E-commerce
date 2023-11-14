@@ -401,4 +401,49 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+
+    const jwt = require('jsonwebtoken');
+
+    localStorage.setItem('token', 'el-token-generado');
+    const token = localStorage.getItem('token');
+// Incluir el token en el encabezado de autorización
+headers: {
+  Authorization: `Bearer ${token}`
+}
+
+const requireAuth = (req, res, next) => {
+  // Obtén el token del encabezado de la solicitud
+  const token = req.header('Authorization');
+
+  // Verifica si hay un token
+  if (!token) {
+    return res.status(401).json({ error: 'Acceso no autorizado. Token no proporcionado.' });
+  }
+
+  try {
+    // Verifica la validez del token
+    const crypto = require('crypto');
+const secretKey = crypto.randomBytes(32).toString('hex');
+
+    
+    req.user = decoded;
+
+    // Continúa con la ejecución de la ruta
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: 'Token no válido.' });
+  }
+};
+
+module.exports = requireAuth;
+function checkPermission(requiredRole) {
+    const token = localStorage.getItem('token');
+    
+    // Verificar si el usuario tiene el rol necesario
+    if (userRoles.includes(requiredRole)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 });
