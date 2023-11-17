@@ -1,27 +1,48 @@
 
 document.addEventListener("DOMContentLoaded", function(){
   const modoBtn = document.getElementById("mode-btn");
-  const content = document.getElementById("content");
-  
+  const content = document.getElementById("container-info");
+  const comment = document.getElementById("div_comment");
+  const dropMenu = document.getElementById("dropdownMenu");
+  const productsSimilar = document.getElementById("productosRelacionados");
+
   // Verifica si el usuario ya ha establecido una preferencia de modo
   const currentMode = localStorage.getItem("modo");
   
   // Si no hay una preferencia previa, usa el "Modo Día" por defecto
   if (!currentMode || currentMode === "day-mode") {
       content.classList.add("day-mode");
+      comment.classList.add("day-mode");
+      dropMenu.classList.add("day-mode");
+      productsSimilar.classList.add("day-mode");
   } else {
       // Si hay una preferencia previa, aplica el modo correspondiente
       content.classList.add("night-mode");
+      comment.classList.add("night-mode");
+      dropMenu.classList.add("night-mode");
+      productsSimilar.classList.add("night-mode");
   }
   
   // Agrega un evento de clic al botón para cambiar el modo
   modoBtn.addEventListener("click", function () {
       if (content.classList.contains("day-mode")) {
           content.classList.remove("day-mode");
+          comment.classList.remove("day-mode");
+          dropMenu.classList.remove("day-mode");
+          productsSimilar.classList.remove("day-mode");
+          productsSimilar.classList.add("night-mode");
+          dropMenu.classList.add("night-mode");
+          comment.classList.add("night-mode");
           content.classList.add("night-mode");
           localStorage.setItem("modo", "night-mode");
       } else {
           content.classList.remove("night-mode");
+          comment.classList.remove("night-mode");
+          dropMenu.classList.remove("night-mode");
+          productsSimilar.classList.remove("night-mode");
+          productsSimilar.classList.add("day-mode");
+          dropMenu.classList.add("day-mode");
+          comment.classList.add("day-mode");
           content.classList.add("day-mode");
           localStorage.setItem("modo", "day-mode");
       }

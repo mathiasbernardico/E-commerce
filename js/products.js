@@ -6,7 +6,9 @@ const busqueda = document.getElementById("busqueda"); //Se genera constante busq
 
 document.addEventListener("DOMContentLoaded", function(){
   const modoBtn = document.getElementById("mode-btn");
-  const content = document.getElementById("content");
+  const content = document.getElementById("dadContainer");
+  const containerList = document.getElementById("container-list");
+  const dropMenu = document.getElementById("dropdownMenu");
   
   // Verifica si el usuario ya ha establecido una preferencia de modo
   const currentMode = localStorage.getItem("modo");
@@ -14,19 +16,31 @@ document.addEventListener("DOMContentLoaded", function(){
   // Si no hay una preferencia previa, usa el "Modo Día" por defecto
   if (!currentMode || currentMode === "day-mode") {
       content.classList.add("day-mode");
+      containerList.classList.add("day-mode");
+      dropMenu.classList.add("day-mode");
   } else {
       // Si hay una preferencia previa, aplica el modo correspondiente
       content.classList.add("night-mode");
+      containerList.classList.add("night-mode");
+      dropMenu.classList.add("night-mode");
   }
   
   // Agrega un evento de clic al botón para cambiar el modo
   modoBtn.addEventListener("click", function () {
       if (content.classList.contains("day-mode")) {
           content.classList.remove("day-mode");
+          containerList.classList.remove("day-mode");
+          dropMenu.classList.remove("day-mode");
+          dropMenu.classList.add("night-mode");
+          containerList.classList.add("night-mode");
           content.classList.add("night-mode");
           localStorage.setItem("modo", "night-mode");
       } else {
           content.classList.remove("night-mode");
+          containerList.classList.remove("night-mode");
+          dropMenu.classList.remove("night-mode");
+          dropMenu.classList.add("day-mode");
+          containerList.classList.add("day-mode");
           content.classList.add("day-mode");
           localStorage.setItem("modo", "day-mode");
       }

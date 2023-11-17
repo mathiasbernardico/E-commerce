@@ -33,7 +33,7 @@
     </script>
   </head>
   <body>
-    <div id="content" class="day-mode">
+    <div id="content">
     <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
       <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -55,10 +55,11 @@
               <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Login
               </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <ul id="dropdownMenu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
                 <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
                 <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
+                <li><button class="dropdown-item" id="mode-btn">Cambiar modo</button> </li>
                 <li><a class="dropdown-item" id="menuLogout" href="login.html" onclick="logout">Cerrar sesión</a></li>
               </ul>
             </li>
@@ -68,7 +69,7 @@
         </div>
       </div>
     </nav>
-    <main class="pb-5 container">
+    <main id="dadContainer" class="pb-5 container day-mode">
       <h1>Productos</h1>
       <p id="category-paragraph"></p>
       <!-- se genera un div con el cuadro de búsqueda -->

@@ -12,6 +12,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      console.log(localStorage.getItem('nav_user'));
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       const login = document.getElementById("dropdownMenu2");
       if(isLoggedIn){
@@ -29,7 +30,7 @@
   </script>
 </head>
 <body>
-  <div id="content" class="day-mode">
+  <div id="content">
   <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -51,7 +52,8 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Login
             </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <ul id="dropdownMenu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
               <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
               <li><button class="dropdown-item" id="mode-btn">Cambiar modo</button> </li>
@@ -64,9 +66,9 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="jumbotron text-center d-none d-lg-block"></div>
-    <div class="album py-5 bg-light" id="super_container">
+  <main id="firstContainer">
+    <div class="jumbotron text-center d-none"></div>
+    <div class="album py-5" id="super_container">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
@@ -107,7 +109,7 @@
     </div>
   </main>
   <footer class="text-muted">
-    <div class="container">
+    <div class="containerBanner">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>

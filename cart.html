@@ -1,4 +1,4 @@
-DOCTYPE html>
+<DOCTYPE html>
 <html lang="es">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,7 +29,7 @@ DOCTYPE html>
   </script>
 </head>
 <body>
-  <div id="content" class="day-mode">
+  <div id="content">
   <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -51,7 +51,7 @@ DOCTYPE html>
             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Login
             </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <ul id="dropdownMenu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
               <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
@@ -65,7 +65,7 @@ DOCTYPE html>
       </div>
     </div>
   </nav>
-  <main>
+  <main id="containerCart" class="day-mode">
     <div class="container">
       <div id="detallesCarrito">
         <h1>Carrito de compras</h1>
@@ -82,30 +82,32 @@ DOCTYPE html>
           </tbody>
         </table>
       </div>
-      <div id="snackbar"></div>
+      <div id="snackbar" style="display: none;"></div>
       <div id="contenedorDeEnvios" class="container-info-envio">
         <form>
           <h4>Tipo de envio</h4>
-          <label>
+          <label class="radioInputs">
             <input type="radio" id="premium" name="opcion" value="1"> Premium 2 a 5 dias (15%)
           </label>
-          <label>
+          <label class="radioInputs">
             <input type="radio" id="express" name="opcion" value="2"> Express 5 a 8 dias (7%)
           </label>
-          <label>
+          <label class="radioInputs">
             <input type="radio" id="standard" name="opcion" value="3"> Standard 12 a 15 dias (5%)
           </label>
           <p class="error" id="formaEnvioError"></p>
+          <div>
           <h4>Direccion de envio</h4>
-          <label for="calle">Calle</label>
-          <input type="text" id="calle" name="calle" required title="Ingresa una calle válida">
+          <label class="streetLabels" for="calle">Calle</label>
+          <input class="streetInputs" type="text" id="calle" name="calle" required title="Ingresa una calle válida">
           <p class="error" id="calleError"></p>
-          <label for="numero">Número</label>
-          <input type="number" id="numero" name="numero" required pattern="\d+" title="Ingresa un número válido">
+          <label class="streetLabels" for="numero">Número</label>
+          <input class="streetInputs" type="number" id="numero" name="numero" required pattern="\d+" title="Ingresa un número válido">
           <p class="error" id="numeroError"></p>
-          <label for="esquina">Esquina</label>
-          <input type="text" id="esquina" name="esquina" required title="Ingresa una esquina">
+          <label class="streetLabels" for="esquina">Esquina</label>
+          <input class="streetInputs" type="text" id="esquina" name="esquina" required title="Ingresa una esquina">
           <p class="error" id="esquinaError"></p>
+          </div>
         </form>
       </div>
       <div id="calculosGenerales">
@@ -123,25 +125,22 @@ DOCTYPE html>
             <form id="formPago">
             <h5>Forma de pago</h5>
             <hr>
-            <label>
+            <label class="creditLabel">
               <input type="radio" id="credito" name="op" value="credito"> Tarjeta de crédito
             </label>
             <hr>
-            <label for="numero-tarjeta">Número de tarjeta</label>
-            <input type="text" id="numero-tarjeta" name="numeroTarjeta" value="">
-            <label for="codigo">Código de seg.</label>
-            <input type="text" id="codigo" name="codigo">
+            <input type="text" id="numero-tarjeta" name="numeroTarjeta" placeholder="Número de tarjeta" value="">
+            <input type="text" id="codigo" name="codigo" placeholder="Código de seg.">
             <br>
-            <label for="vencimiento">Vencimiento(MM/AA)</label>
-            <input type="text" id="vencimiento" name="vencimiento">
+            <input type="text" id="vencimiento" name="vencimiento" placeholder="Vencimiento(MM/AA)">
             <br>
             <p class="error" id="tarjetaError"></p>
-            <label>
+            <hr>
+            <label class="creditLabel">
               <input type="radio" id="transferencia" name="op" value="transferencia"> Transferencia bancaria
             </label>
             <hr>
-            <label for="numero-cuenta">Número de cuenta</label>
-            <input type="text" id="numero-cuenta" name="numeroTarjeta" value="">
+            <input type="text" id="numero-cuenta" name="numeroTarjeta" value="" placeholder="Número de cuenta">
             <p class="error" id="cuentaError"></p>
           </form>
           </div>

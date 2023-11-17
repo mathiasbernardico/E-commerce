@@ -30,7 +30,7 @@
   </script>
 </head>
 <body>
-  <div id="content" class="day-mode">
+  <div id="content">
   <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -52,7 +52,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Login
             </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <ul id="dropdownMenu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
               <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
@@ -66,7 +66,7 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5">
+  <main id="mainContent" class="pb-5 day-mode">
     <div id="containerCategorias" class="text-center p-4">
       <h2 class="tit_cat">Categorías</h2>
       <p class="tit_cat">Verás aquí todas las categorías del sitio.</p>

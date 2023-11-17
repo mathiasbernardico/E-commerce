@@ -27,7 +27,7 @@
   </script>
 </head>
 <body>
-  <div id="content" class="day-mode">
+  <div id="content"></div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-green p-1" id="navbar">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -49,7 +49,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Login
             </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <ul id="dropdownMenu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <li><a class="dropdown-item" id="menuLogin" href="login.html">Login</a></li>
               <li><a class="dropdown-item" id="menuCart" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" id="menuProfile" href="my-profile.html">Mi perfil</a></li>
@@ -63,7 +63,8 @@
       </div>
     </div>
   </nav>
-  <div class="container">
+  
+  <div id="containerDad" class="container day-mode">
     <div id="containerVender" class="text-center p-4">
       <h2>Vender</h2>
       <p class="lead">Ingresa los datos del artículo a vender.</p>
@@ -109,7 +110,7 @@
             <div class="col-md-4 mb-3">
               <label for="productCurrency">Moneda</label>
               <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency" required>
-                <option value="" hidden selected>Seleccionar moneda</option>
+                <option value="" hidden selected>Seleccionar</option>
                 <option>Pesos Uruguayos (UYU)</option>
                 <option>Dólares (USD)</option>
               </select>
@@ -147,7 +148,7 @@
           </div>
           <hr class="mb-4">
           <h5 class="mb-3">Tipo de publicación</h5>
-          <div class="d-block my-3">
+          <div class="d-block my-3" id="radioButtons">
             <div class="custom-control custom-radio">
               <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
                 required="">
@@ -208,7 +209,7 @@
   </div>
   <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div id="modal" class="modal-content day-mode">
         <div class="modal-header">
           <h5 class="modal-title">Condiciones de publicación</h5>
         </div>
