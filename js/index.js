@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // Si no hay una preferencia previa, usa el "Modo Día" por defecto
     if (!currentMode || currentMode === "day-mode") {
+        content.classList.remove("night-mode");
         content.classList.add("day-mode");
         otherContainer.classList.add("day-mode");
         dropMenu.classList.add("day-mode");

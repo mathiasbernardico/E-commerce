@@ -766,7 +766,9 @@ main h1 {
   padding: 20px;
 }
 
-.table {
+#tablaCarrito {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
@@ -862,6 +864,7 @@ tr>td>img{
 /* Modo dia / Modo noche */
 #containerCart.day-mode *{
   background-color: #eeeff1;
+  color: #333;
 }
 #containerCart.night-mode{
   background-color: #333;
@@ -999,12 +1002,14 @@ transform: translateY(-35px);
   #containerDad #containerCart #mainContent #container-info #div_comment #productosRelacionados #dadContainer #container-list #super_container #firstContainer .containerBanner #loginContent {
     padding: 20px;
   }
+  
 }
 
 @media (min-width: 376px) and (max-width: 720px) {
   #containerDad #containerCart #mainContent #container-info #div_comment #productosRelacionados #dadContainer #container-list #super_container #firstContainer .containerBanner #loginContent {
     padding: 30px;
   }
+
 }
 
 @media (min-width: 721px) and (max-width: 1366px) {
