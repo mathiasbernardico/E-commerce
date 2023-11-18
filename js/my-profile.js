@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     const modeBtn = document.getElementById("mode-btn");
-    const content = document.getElementById("content");
+    const content = document.getElementById("containerSup");
+    const downMenu = document.getElementById("dropdownMenu");
     
     // Verifica si el usuario ya ha establecido una preferencia de modo
     const currentMode = localStorage.getItem("mode");
@@ -17,10 +18,14 @@ document.addEventListener("DOMContentLoaded", function(){
     modeBtn.addEventListener("click", function () {
         if (content.classList.contains("day-mode")) {
             content.classList.remove("day-mode");
+            downMenu.classList.remove("day-mode");
+            downMenu.classList.add("night-mode");
             content.classList.add("night-mode");
             localStorage.setItem("mode", "night-mode");
         } else {
             content.classList.remove("night-mode");
+            downMenu.classList.remove("night-mode");
+            downMenu.classList.add("day-mode");
             content.classList.add("day-mode");
             localStorage.setItem("mode", "day-mode");
         }
