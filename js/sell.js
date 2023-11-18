@@ -20,11 +20,13 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // Si no hay una preferencia previa, usa el "Modo Día" por defecto
     if (!currentMode || currentMode === "day-mode") {
+        content.classList.remove("night-mode");
         content.classList.add("day-mode");
         modal.classList.add("day-mode");
         dropMenu.classList.add("day-mode");
     } else {
         // Si hay una preferencia previa, aplica el modo correspondiente
+        content.classList.remove("night-mode");
         content.classList.add("night-mode");
         modal.classList.add("night-mode");
         dropMenu.classList.add("night-mode");
