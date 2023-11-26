@@ -42,7 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!recargo) {
     // La página no se ha recargado todavía, recárgala
     localStorage.setItem("reloaded", "true");
-    window.location.reload();
+    setTimeout(() => {
+        window.location.reload();
+    }, 1000);
   }
 
   const IDinicial = "25801";
