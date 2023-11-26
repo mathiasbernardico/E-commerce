@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const IDinicial = "25801";
     const url = `https://japceibal.github.io/emercado-api/user_cart/${IDinicial}.json`;
 
-    var arrayItems = JSON.parse(localStorage.getItem('items')) || [];
+    let arrayItems = JSON.parse(localStorage.getItem('items')) || [];
     // Objeto para almacenar la cantidad de veces que se repite cada ID
     const idContador = {};
 
@@ -159,7 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
             productoEliminado.parentElement.parentElement.remove();
             actualizarPrecioTotal();
         }
-
         CalculosGenerales();
     }
 
@@ -175,56 +174,65 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+
+    function OpcionSeleccionada(e) {
+        const contenedorTotal = document.getElementById("calculosGenerales");
+        const SumaTotal = JSON.parse(localStorage.getItem('SumasTotales'));
+        switch (e.target.value) {
+            case "1":
+                const premium = SumaTotal * (15 / 100);
+                const sumaOpt1 = SumaTotal + premium;
+                const divPremium = `
+                    <h2>Subtotal: $USD ${SumaTotal}</h2>
+                    <h2>Costo de envío: $USD ${premium}</h2>
+                    <h2>Total: $USD ${sumaOpt1}</h2>
+                `;
+                contenedorTotal.innerHTML = divPremium;
+                console.log("1");
+                break;
+            case "2":
+                const express = SumaTotal * (7 / 100);
+                const sumaOpt2 = SumaTotal + express;
+                const divExpress = `
+                    <h2>Subtotal: $USD ${SumaTotal}</h2>
+                    <h2>Costo de envío: $USD ${express}</h2>
+                    <h2>Total: $USD ${sumaOpt2}</h2>
+                `;
+                contenedorTotal.innerHTML = divExpress;
+                console.log("2");
+                break;
+            case "3":
+                const standard = SumaTotal * (5 / 100);
+                const sumaOpt3 = SumaTotal + standard;
+                const divStandard = `
+                    <h2>Subtotal: $USD ${SumaTotal}</h2>
+                    <h2>Costo de envío: $USD ${standard}</h2>
+                    <h2>Total: $USD ${sumaOpt3}</h2>
+                `;
+                contenedorTotal.innerHTML = divStandard;
+                console.log("3");
+                break;
+            default:
+                break;
+        }
+    }
+
     function CalculosGenerales() {
         const contenedorTotal = document.getElementById("calculosGenerales");
-        const imputs = document.querySelectorAll('#contenedorDeEnvios form input');
+        const inputs = document.querySelectorAll('#contenedorDeEnvios form input');
         const SumaTotal = JSON.parse(localStorage.getItem('SumasTotales'));
-
-        const OpcionSeleccionada = (e) => {
-            switch (e.target.value) {
-                case "1":
-                    if (e.target.checked) {
-                        const premium = SumaTotal * (15 / 100);
-                        const sumaOpt1 = SumaTotal + premium;
-                        const divPremium = `
-                        <h2>Subtotal: $USD ${SumaTotal}</h2>
-                        <h2>Costo de envío: $USD ${premium}</h2>
-                        <h2>Total: $USD ${sumaOpt1}</h2>
-                        `;
-                        contenedorTotal.innerHTML = divPremium;
-                    }
-                    break;
-                case "2":
-                    if (e.target.checked) {
-                        const express = SumaTotal * (7 / 100);
-                        const sumaOpt2 = SumaTotal + express;
-                        const divExpress = `
-                        <h2>Subtotal: $USD ${SumaTotal}</h2>
-                        <h2>Costo de envío: $USD ${express}</h2>
-                        <h2>Total: $USD ${sumaOpt2}</h2>
-                        `;
-                        contenedorTotal.innerHTML = divExpress;
-                    }
-                    break;
-                case "3":
-                    if (e.target.checked) {
-                        const standard = SumaTotal * 0.5;
-                        const sumaOpt3 = SumaTotal + standard;
-                        const divStandard = `
-                        <h2>Subtotal: $USD ${SumaTotal}</h2>
-                        <h2>Costo de envío: $USD ${standard}</h2>
-                        <h2>Total: $USD ${sumaOpt3}</h2>
-                        `;
-                        contenedorTotal.innerHTML = divStandard;
-                    }
-                    break;
-            }
-        }
-        imputs.forEach((imputs) => {
-            imputs.addEventListener('keyup', OpcionSeleccionada);
-            imputs.addEventListener('blur', OpcionSeleccionada);
+        inputs.forEach(input => {
+            input.addEventListener('change', OpcionSeleccionada);
         });
     }
+
+const radioInputs = document.querySelectorAll('#contenedorDeEnvios input[type="radio"]');
+const contenedorTotal = document.getElementById('contenedorTotal');
+
+radioInputs.forEach(radio => {
+    radio.addEventListener('change', OpcionSeleccionada);
+});
+
 
     const idcredito = document.getElementById("credito");
     idcredito.addEventListener('click', function () {
@@ -261,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const img = item.image;
                 const name = item.name;
                 const cost = item.unitCost;
-                var cant = 1;
+                let cant = 1;
                 const agregandoItem = {
                     "id": IDinicial,
                     "name": name,
